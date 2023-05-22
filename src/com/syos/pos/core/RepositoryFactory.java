@@ -1,0 +1,68 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.syos.pos.core;
+
+import com.syos.pos.repository.BatchRepository;
+import com.syos.pos.repository.BillDetailRepository;
+import com.syos.pos.repository.BillHeaderRepository;
+import com.syos.pos.repository.ItemRepository;
+import com.syos.pos.repository.ShelfRepository;
+import com.syos.pos.repository.dao.IRepositoryDAO;
+
+/**
+ *
+ * @author senu2k
+ */
+public class RepositoryFactory {
+    
+    private static RepositoryFactory repositoryFactory;
+    
+    private final ItemRepository itemRepository;
+    private final BatchRepository batchRepository;
+    private final ShelfRepository shelfRepository;
+//    private final BillHeaderRepository billHeaderRepository;
+//    private final BillDetailRepository billDetailfRepository;
+
+    public enum RepositoryType {
+        ITEM, BATCH, SHELF, BILL_HEADER, BILL_DETAIL;
+    }
+    
+    public RepositoryFactory() {
+        itemRepository = new ItemRepository();
+        batchRepository = new BatchRepository();
+        shelfRepository = new ShelfRepository();
+//        billHeaderRepository = new BillHeaderRepository();
+//        billDetailfRepository = new BillDetailRepository();
+    }
+    
+    public static RepositoryFactory getInstance(){
+        
+        if (repositoryFactory == null) {
+            repositoryFactory = new RepositoryFactory();
+        }
+        
+        return repositoryFactory;
+    }
+    
+    
+    public IRepositoryDAO getDAO(RepositoryType repositoryType) {
+        switch (repositoryType) {
+            case ITEM:
+                return itemRepository;
+            case BATCH:
+                return batchRepository;
+            case SHELF:
+                return shelfRepository;
+//            case BILL_HEADER:
+//                return billHeaderRepository;
+//            case BILL_DETAIL:
+//                return billDetailfRepository;
+            default:
+                return null;
+        }
+    }
+    
+}
