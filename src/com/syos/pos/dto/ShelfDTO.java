@@ -11,4 +11,34 @@ package com.syos.pos.dto;
  */
 public class ShelfDTO {
     
+    private String item_code;
+    private double capacity;
+    private double item_qty;
+
+    public String getItem_code() {
+        return item_code;
+    }
+
+    public void setItem_code(String item_code) {
+        this.item_code = item_code;
+    }
+
+    public double getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(double capacity) {
+        this.capacity = capacity;
+    }
+
+    public double getItem_qty() {
+        return item_qty;
+    }
+
+    public void setItem_qty(double item_qty) {
+        this.item_qty = item_qty;
+    }
+    
+    
+    
 }

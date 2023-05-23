@@ -5,10 +5,78 @@
  */
 package com.syos.pos.dto;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author senu2k
  */
 public class BatchDTO {
+    
+    private String batch_code;
+    private LocalDate expiry_date;
+    private LocalDate purchase_date;
+    private String item_code;
+    private double batch_qty;
+    private double available_qty;
+    private boolean shelf_status; // in store | in shelf
+
+    public String getBatch_code() {
+        return batch_code;
+    }
+
+    public void setBatch_code(String batch_code) {
+        this.batch_code = batch_code;
+    }
+
+    public LocalDate getExpiry_date() {
+        return expiry_date;
+    }
+
+    public void setExpiry_date(LocalDate expiry_date) {
+        this.expiry_date = expiry_date;
+    }
+
+    public LocalDate getPurchase_date() {
+        return purchase_date;
+    }
+
+    public void setPurchase_date(LocalDate purchase_date) {
+        this.purchase_date = purchase_date;
+    }
+
+    public String getItem_code() {
+        return item_code;
+    }
+
+    public void setItem_code(String item_code) {
+        this.item_code = item_code;
+    }
+
+    public double getBatch_qty() {
+        return batch_qty;
+    }
+
+    public void setBatch_qty(double batch_qty) {
+        this.batch_qty = batch_qty;
+    }
+
+    public double getAvailable_qty() {
+        return available_qty;
+    }
+
+    public void setAvailable_qty(double available_qty) {
+        this.available_qty = available_qty;
+    }
+
+    public boolean isShelf_status() {
+        return shelf_status;
+    }
+
+    public void setShelf_status(boolean shelf_status) {
+        this.shelf_status = shelf_status;
+    }
+    
+    
     
 }
