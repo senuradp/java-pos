@@ -5,13 +5,13 @@
  */
 package com.syos.pos.repository.dao;
 
-import com.syos.pos.entity.Item;
+import com.syos.pos.entity.Product;
 
 /**
  *
  * @author senu2k
  */
-public interface IItemRepository extends IRepositoryDAO<Item>{
+public interface IProductRepository extends IRepositoryDAO<Product>{
     
     
     

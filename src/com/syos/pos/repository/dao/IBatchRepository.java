@@ -6,7 +6,7 @@
 package com.syos.pos.repository.dao;
 
 import com.syos.pos.entity.Batch;
-import com.syos.pos.entity.Item;
+import com.syos.pos.entity.Product;
 
 /**
  *

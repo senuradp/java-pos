@@ -6,6 +6,7 @@
 package com.syos.pos.entity;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -14,18 +15,22 @@ import java.time.LocalDate;
 public class Batch {
     
     private String batch_code;
-    private LocalDate expiry_date;
-    private LocalDate purchase_date;
-    private String item_code;
+    private Date purchase_date;
+    private Date expiry_date;
+    private String product_code;
     private double batch_qty;
     private double available_qty;
     private boolean shelf_status; // in store | in shelf
 
-    public Batch(String batch_code, LocalDate expiry_date, LocalDate purchase_date, String item_code, double batch_qty, double available_qty, boolean shelf_status) {
+    public Batch() {
+    }
+    
+
+    public Batch(String batch_code, Date expiry_date, Date purchase_date, String product_code, double batch_qty, double available_qty, boolean shelf_status) {
         this.batch_code = batch_code;
-        this.expiry_date = expiry_date;
         this.purchase_date = purchase_date;
-        this.item_code = item_code;
+        this.expiry_date = expiry_date;
+        this.product_code = product_code;
         this.batch_qty = batch_qty;
         this.available_qty = available_qty;
         this.shelf_status = shelf_status;
@@ -33,11 +38,9 @@ public class Batch {
 
     @Override
     public String toString() {
-        return "Batch{" + "Batch code=" + batch_code + ", Expiry date=" + expiry_date + ", Purchase date=" + purchase_date + ", Item code=" + item_code + ", Batch qty=" + batch_qty + ", Available qty=" + available_qty + ", Shelf status=" + shelf_status + '}';
+        return "Batch{" + "Batch code=" + batch_code + ", Expiry date=" + expiry_date + ", Purchase date=" + purchase_date + ", Product code=" + product_code + ", Batch qty=" + batch_qty + ", Available qty=" + available_qty + ", Shelf status=" + shelf_status + '}';
     }
-    
-    
-    
+
     public String getBatch_code() {
         return batch_code;
     }
@@ -46,28 +49,28 @@ public class Batch {
         this.batch_code = batch_code;
     }
 
-    public LocalDate getExpiry_date() {
-        return expiry_date;
-    }
-
-    public void setExpiry_date(LocalDate expiry_date) {
-        this.expiry_date = expiry_date;
-    }
-
-    public LocalDate getPurchase_date() {
+    public Date getPurchase_date() {
         return purchase_date;
     }
 
-    public void setPurchase_date(LocalDate purchase_date) {
+    public void setPurchase_date(Date purchase_date) {
         this.purchase_date = purchase_date;
     }
 
-    public String getItem_code() {
-        return item_code;
+    public Date getExpiry_date() {
+        return expiry_date;
     }
 
-    public void setItem_code(String item_code) {
-        this.item_code = item_code;
+    public void setExpiry_date(Date expiry_date) {
+        this.expiry_date = expiry_date;
+    }
+
+    public String getProduct_code() {
+        return product_code;
+    }
+
+    public void setProduct_code(String product_code) {
+        this.product_code = product_code;
     }
 
     public double getBatch_qty() {
@@ -93,6 +96,7 @@ public class Batch {
     public void setShelf_status(boolean shelf_status) {
         this.shelf_status = shelf_status;
     }
+    
     
     
     

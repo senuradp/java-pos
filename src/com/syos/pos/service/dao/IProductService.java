@@ -5,12 +5,12 @@
  */
 package com.syos.pos.service.dao;
 
-import com.syos.pos.dto.ItemDTO;
+import com.syos.pos.dto.ProductDTO;
 
 /**
  *
  * @author senu2k
  */
-public interface IItemService extends IServiceDAO<ItemDTO>{
+public interface IProductService extends IServiceDAO<ProductDTO>{
     
 }

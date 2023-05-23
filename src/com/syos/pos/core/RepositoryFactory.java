@@ -8,7 +8,7 @@ package com.syos.pos.core;
 import com.syos.pos.repository.BatchRepository;
 import com.syos.pos.repository.BillDetailRepository;
 import com.syos.pos.repository.BillHeaderRepository;
-import com.syos.pos.repository.ItemRepository;
+import com.syos.pos.repository.ProductRepository;
 import com.syos.pos.repository.ShelfRepository;
 import com.syos.pos.repository.dao.IRepositoryDAO;
 
@@ -20,7 +20,7 @@ public class RepositoryFactory {
     
     private static RepositoryFactory repositoryFactory;
     
-    private final ItemRepository itemRepository;
+    private final ProductRepository itemRepository;
     private final BatchRepository batchRepository;
     private final ShelfRepository shelfRepository;
 //    private final BillHeaderRepository billHeaderRepository;
@@ -31,7 +31,7 @@ public class RepositoryFactory {
     }
     
     public RepositoryFactory() {
-        itemRepository = new ItemRepository();
+        itemRepository = new ProductRepository();
         batchRepository = new BatchRepository();
         shelfRepository = new ShelfRepository();
 //        billHeaderRepository = new BillHeaderRepository();

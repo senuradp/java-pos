@@ -5,9 +5,15 @@
  */
 package com.syos.pos.repository;
 
+import com.syos.pos.core.RepositoryCRUD;
 import com.syos.pos.entity.Batch;
 import com.syos.pos.repository.dao.IBatchRepository;
+import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,23 +22,57 @@ import java.util.List;
 public class BatchRepository implements IBatchRepository{
 
     @Override
-    public boolean add(Batch t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean add(Batch batch) {
+        try{
+            return RepositoryCRUD.executeUpdate("INSERT INTO batch VALUES(?,?,?,?,?,?,?,?)", 0, batch.getBatch_code(), batch.getPurchase_date(), batch.getExpiry_date(), batch.getProduct_code(), batch.getBatch_qty(), batch.getAvailable_qty(), batch.isShelf_status());
+        }catch (Exception ex) {
+             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
     }
 
     @Override
-    public boolean update(Batch t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean update(Batch batch) {
+        try{
+            return RepositoryCRUD.executeUpdate("UPDATE batch SET batch_code=?, purchase_date=?,expiry_date=?,product_code=?, batch_qty=?, available_qty=?, shelf_status=? WHERE product_code=?" ,batch.getBatch_code(), batch.getPurchase_date(), batch.getExpiry_date(), batch.getProduct_code(), batch.getBatch_qty(), batch.getAvailable_qty(), batch.isShelf_status(), batch.getBatch_code());
+        }catch (Exception ex) {
+             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
     }
 
     @Override
-    public boolean delete(String id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean delete(String code) throws Exception {
+        try{
+            return RepositoryCRUD.executeUpdate("DELETE FROM batch WHERE batch_code = ?", code);
+        }catch (Exception ex) {
+             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
     }
 
     @Override
     public List<Batch> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ResultSet rst = RepositoryCRUD.executeQuery("SELECT * FROM batch");
+        List<Batch> arrayList = new ArrayList<>();
+        while (rst.next()) {
+            Batch batches = new Batch();
+            batches.setBatch_code(rst.getString(1));
+            batches.setPurchase_date(rst.getDate(2));
+            batches.setExpiry_date(rst.getDate(3));
+            batches.setProduct_code(rst.getString(4));
+            batches.setBatch_qty(rst.getDouble(5));
+            batches.setAvailable_qty(rst.getDouble(6));
+            batches.setShelf_status(rst.getBoolean(7));
+            
+            
+            arrayList.add(batches);
+        }
+        
+        return arrayList;
     }
     
 }

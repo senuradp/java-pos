@@ -6,6 +6,7 @@
 package com.syos.pos.dto;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *
@@ -14,8 +15,8 @@ import java.time.LocalDate;
 public class BatchDTO {
     
     private String batch_code;
-    private LocalDate expiry_date;
-    private LocalDate purchase_date;
+    private Date expiry_date;
+    private Date purchase_date;
     private String item_code;
     private double batch_qty;
     private double available_qty;
@@ -29,19 +30,19 @@ public class BatchDTO {
         this.batch_code = batch_code;
     }
 
-    public LocalDate getExpiry_date() {
+    public Date getExpiry_date() {
         return expiry_date;
     }
 
-    public void setExpiry_date(LocalDate expiry_date) {
+    public void setExpiry_date(Date expiry_date) {
         this.expiry_date = expiry_date;
     }
 
-    public LocalDate getPurchase_date() {
+    public Date getPurchase_date() {
         return purchase_date;
     }
 
-    public void setPurchase_date(LocalDate purchase_date) {
+    public void setPurchase_date(Date purchase_date) {
         this.purchase_date = purchase_date;
     }
 
@@ -76,7 +77,7 @@ public class BatchDTO {
     public void setShelf_status(boolean shelf_status) {
         this.shelf_status = shelf_status;
     }
-    
+
     
     
 }

@@ -11,28 +11,33 @@ package com.syos.pos.entity;
  */
 public class Shelf {
     
-    private String item_code;
+    private String shelf_code;
+    private String product_code;
     private double capacity;
-    private double item_qty;
+    private double product_qty;
 
-    public Shelf(String item_code, double capacity, double item_qty) {
-        this.item_code = item_code;
-        this.capacity = capacity;
-        this.item_qty = item_qty;
+    public Shelf() {
     }
+
+    public Shelf(String shelf_code, String product_code, double capacity, double product_qty) {
+        this.shelf_code = shelf_code;
+        this.product_code = product_code;
+        this.capacity = capacity;
+        this.product_qty = product_qty;
+    }
+
 
     @Override
     public String toString() {
-        return "Shelf{" + "Item code=" + item_code + ", Capacity=" + capacity + ", Item qty=" + item_qty + '}';
-    }
-    
-
-    public String getItem_code() {
-        return item_code;
+        return "Shelf{"+ "Shelf code=" + shelf_code + "Product code=" + product_code + ", Capacity=" + capacity + ", Product qty=" + product_qty + '}';
     }
 
-    public void setItem_code(String item_code) {
-        this.item_code = item_code;
+    public String getProduct_code() {
+        return product_code;
+    }
+
+    public void setProduct_code(String product_code) {
+        this.product_code = product_code;
     }
 
     public double getCapacity() {
@@ -43,14 +48,21 @@ public class Shelf {
         this.capacity = capacity;
     }
 
-    public double getItem_qty() {
-        return item_qty;
+    public double getProduct_qty() {
+        return product_qty;
     }
 
-    public void setItem_qty(double item_qty) {
-        this.item_qty = item_qty;
+    public void setProduct_qty(double product_qty) {
+        this.product_qty = product_qty;
     }
-    
+
+    public String getShelf_code() {
+        return shelf_code;
+    }
+
+    public void setShelf_code(String shelf_code) {
+        this.shelf_code = shelf_code;
+    }
     
     
 }
