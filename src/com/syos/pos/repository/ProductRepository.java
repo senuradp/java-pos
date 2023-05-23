@@ -36,7 +36,7 @@ public class ProductRepository implements IProductRepository{
     public boolean update(Product product) {
         
         try {
-            return RepositoryCRUD.executeUpdate("UPDATE product SET product_code=?, batch=?,name=?,unit_price=?, shelf_Quantity=? WHERE product_code=?" ,product.getProduct_code(), product.getProduct_batch(),product.getProduct_name(),product.getShelf_qty(), product.getProduct_code());
+            return RepositoryCRUD.executeUpdate("UPDATE product SET product_code=?, batch=?,name=?,unit_price=?, shelf_quantity=? WHERE product_code=?" ,product.getProduct_code(), product.getProduct_batch(),product.getProduct_name(),product.getShelf_qty(), product.getProduct_code());
         } catch (Exception ex) {
             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }

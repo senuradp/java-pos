@@ -17,7 +17,7 @@ public class BatchDTO {
     private String batch_code;
     private Date expiry_date;
     private Date purchase_date;
-    private String item_code;
+    private String product_code;
     private double batch_qty;
     private double available_qty;
     private boolean shelf_status; // in store | in shelf
@@ -46,12 +46,12 @@ public class BatchDTO {
         this.purchase_date = purchase_date;
     }
 
-    public String getItem_code() {
-        return item_code;
+    public String getProduct_code() {
+        return product_code;
     }
 
-    public void setItem_code(String item_code) {
-        this.item_code = item_code;
+    public void setProduct_code(String product_code) {
+        this.product_code = product_code;
     }
 
     public double getBatch_qty() {
@@ -77,7 +77,7 @@ public class BatchDTO {
     public void setShelf_status(boolean shelf_status) {
         this.shelf_status = shelf_status;
     }
-
+    
     
     
 }

@@ -44,7 +44,7 @@ public class ShelfRepository implements IShelfRepository{
     @Override
     public boolean delete(String code) throws Exception {
         try{
-            return RepositoryCRUD.executeUpdate("DELETE FROM product WHERE shelf_code = ?", code);
+            return RepositoryCRUD.executeUpdate("DELETE FROM shelf WHERE shelf_code = ?", code);
         }catch(Exception ex){
            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }

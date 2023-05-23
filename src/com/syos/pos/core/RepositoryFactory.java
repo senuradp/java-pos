@@ -27,7 +27,7 @@ public class RepositoryFactory {
 //    private final BillDetailRepository billDetailfRepository;
 
     public enum RepositoryType {
-        ITEM, BATCH, SHELF, BILL_HEADER, BILL_DETAIL;
+        PRODUCT, BATCH, SHELF, BILL_HEADER, BILL_DETAIL;
     }
     
     public RepositoryFactory() {
@@ -50,7 +50,7 @@ public class RepositoryFactory {
     
     public IRepositoryDAO getDAO(RepositoryType repositoryType) {
         switch (repositoryType) {
-            case ITEM:
+            case PRODUCT:
                 return itemRepository;
             case BATCH:
                 return batchRepository;
