@@ -24,7 +24,7 @@ public class ProductRepository implements IProductRepository{
     public boolean add(Product product) {
         
         try {
-            return RepositoryCRUD.executeUpdate("INSERT INTO product VALUES(?,?,?,?,?)", product.getProduct_code(), product.getProduct_batch(),product.getProduct_name(), product.getProduct_price(), product.getShelf_qty());
+            return RepositoryCRUD.executeUpdate("INSERT INTO product VALUES(?,?,?,?)", product.getProduct_code(),product.getProduct_name(), product.getProduct_price());
         } catch (Exception ex) {
             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -36,7 +36,7 @@ public class ProductRepository implements IProductRepository{
     public boolean update(Product product) {
         
         try {
-            return RepositoryCRUD.executeUpdate("UPDATE product SET product_code=?, batch=?,name=?,unit_price=?, shelf_quantity=? WHERE product_code=?" ,product.getProduct_code(), product.getProduct_batch(),product.getProduct_name(),product.getShelf_qty(), product.getProduct_code());
+            return RepositoryCRUD.executeUpdate("UPDATE product SET product_code=?,name=?,unit_price=? WHERE product_code=?" ,product.getProduct_code(),product.getProduct_name(), product.getProduct_code());
         } catch (Exception ex) {
             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -61,10 +61,8 @@ public class ProductRepository implements IProductRepository{
         while (rst.next()) {
             Product products = new Product();
             products.setProduct_code(rst.getString(1));
-            products.setProduct_batch(rst.getString(2));
-            products.setProduct_name(rst.getString(3));
-            products.setProduct_price(rst.getDouble(4));
-            products.setShelf_qty(rst.getDouble(5));
+            products.setProduct_name(rst.getString(2));
+            products.setProduct_price(rst.getDouble(3));
             
             arrayList.add(products);
         }

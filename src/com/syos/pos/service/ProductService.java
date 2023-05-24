@@ -30,10 +30,8 @@ public class ProductService implements IProductService{
         try{
             Product product = new Product();
             product.setProduct_code(productDTO.getProduct_code());
-            product.setProduct_batch(productDTO.getProduct_batch());
             product.setProduct_name(productDTO.getProduct_name());
             product.setProduct_price(productDTO.getProduct_price());
-            product.setShelf_qty(productDTO.getShelf_qty());
             
             return productRepositoryDAO.add(product);
             
@@ -50,11 +48,8 @@ public class ProductService implements IProductService{
         try{
             Product product = new Product();
             product.setProduct_code(productDTO.getProduct_code());
-            product.setProduct_batch(productDTO.getProduct_batch());
             product.setProduct_name(productDTO.getProduct_name());
             product.setProduct_price(productDTO.getProduct_price());
-            product.setShelf_qty(productDTO.getShelf_qty());
-
             return productRepositoryDAO.update(product);
         }catch (Exception ex) {
              Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,10 +78,8 @@ public class ProductService implements IProductService{
             for (Product product : allProducts) {
                 ProductDTO productDTO = new ProductDTO();
                 productDTO.setProduct_code(product.getProduct_code());
-                productDTO.setProduct_batch(product.getProduct_batch());
                 productDTO.setProduct_name(product.getProduct_name());
                 productDTO.setProduct_price(product.getProduct_price());
-                productDTO.setShelf_qty(product.getShelf_qty());
 
                 allProductDTOs.add(productDTO);
 

@@ -20,7 +20,7 @@ public class BatchDTO {
     private String product_code;
     private double batch_qty;
     private double available_qty;
-    private boolean shelf_status; // in store | in shelf
+    private boolean is_sold; // in store | in shelf
 
     public String getBatch_code() {
         return batch_code;
@@ -70,12 +70,12 @@ public class BatchDTO {
         this.available_qty = available_qty;
     }
 
-    public boolean isShelf_status() {
-        return shelf_status;
+    public boolean getIs_sold() {
+        return is_sold;
     }
 
-    public void setShelf_status(boolean shelf_status) {
-        this.shelf_status = shelf_status;
+    public void setIs_sold(boolean is_sold) {
+        this.is_sold = is_sold;
     }
     
     

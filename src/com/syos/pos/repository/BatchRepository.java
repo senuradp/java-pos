@@ -24,7 +24,7 @@ public class BatchRepository implements IBatchRepository{
     @Override
     public boolean add(Batch batch) {
         try{
-            return RepositoryCRUD.executeUpdate("INSERT INTO batch VALUES(?,?,?,?,?,?,?)", batch.getBatch_code(), batch.getPurchase_date(), batch.getExpiry_date(), batch.getProduct_code(), batch.getBatch_qty(), batch.getAvailable_qty(), batch.isShelf_status());
+            return RepositoryCRUD.executeUpdate("INSERT INTO batch VALUES(?,?,?,?,?,?,?)", batch.getBatch_code(), batch.getPurchase_date(), batch.getExpiry_date(), batch.getProduct_code(), batch.getBatch_qty(), batch.getAvailable_qty(), batch.getIs_sold());
         }catch (Exception ex) {
              Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -35,7 +35,7 @@ public class BatchRepository implements IBatchRepository{
     @Override
     public boolean update(Batch batch) {
         try{
-            return RepositoryCRUD.executeUpdate("UPDATE batch SET batch_code=?, purchase_date=?,expiry_date=?,product_code=?, batch_qty=?, available_qty=?, shelf_status=? WHERE product_code=?" ,batch.getBatch_code(), batch.getPurchase_date(), batch.getExpiry_date(), batch.getProduct_code(), batch.getBatch_qty(), batch.getAvailable_qty(), batch.isShelf_status(), batch.getBatch_code());
+            return RepositoryCRUD.executeUpdate("UPDATE batch SET batch_code=?, purchase_date=?,expiry_date=?,product_code=?, batch_qty=?, available_qty=?, is_sold=? WHERE product_code=?" ,batch.getBatch_code(), batch.getPurchase_date(), batch.getExpiry_date(), batch.getProduct_code(), batch.getBatch_qty(), batch.getAvailable_qty(), batch.getIs_sold(), batch.getBatch_code());
         }catch (Exception ex) {
              Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -66,7 +66,7 @@ public class BatchRepository implements IBatchRepository{
             batches.setProduct_code(rst.getString(4));
             batches.setBatch_qty(rst.getDouble(5));
             batches.setAvailable_qty(rst.getDouble(6));
-            batches.setShelf_status(rst.getBoolean(7));
+            batches.setIs_sold(rst.getBoolean(7));
             
             
             arrayList.add(batches);

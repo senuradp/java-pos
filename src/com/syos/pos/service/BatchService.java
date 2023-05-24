@@ -34,7 +34,7 @@ public class BatchService implements IBatchService{
             batch.setProduct_code(batchDTO.getProduct_code());
             batch.setBatch_qty(batchDTO.getBatch_qty());
             batch.setAvailable_qty(batchDTO.getAvailable_qty());
-            batch.setShelf_status(batchDTO.isShelf_status());
+            batch.setIs_sold(batchDTO.getIs_sold());
             
             return batchRepositoryDAO.add(batch);
             
@@ -55,7 +55,7 @@ public class BatchService implements IBatchService{
             batch.setProduct_code(batchDTO.getProduct_code());
             batch.setBatch_qty(batchDTO.getBatch_qty());
             batch.setAvailable_qty(batchDTO.getAvailable_qty());
-            batch.setShelf_status(batchDTO.isShelf_status());
+            batch.setIs_sold(batchDTO.getIs_sold());
             
             return batchRepositoryDAO.update(batch);
             
@@ -94,7 +94,7 @@ public class BatchService implements IBatchService{
                 batchDTO.setProduct_code(batch.getProduct_code());
                 batchDTO.setBatch_qty(batch.getBatch_qty());
                 batchDTO.setAvailable_qty(batch.getAvailable_qty());
-                batchDTO.setShelf_status(batch.isShelf_status());
+                batchDTO.setIs_sold(batch.getIs_sold());
 
                 allBatchDTOs.add(batchDTO);
 

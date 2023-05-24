@@ -23,25 +23,25 @@ public class Main {
     public static void main(String[] args) {
         
 
-//        // add a product
-//        ProductDTO productDTO = new ProductDTO();
-//        
-//        productDTO.setProduct_code("P001");
-//        productDTO.setProduct_batch("B001");
-//        productDTO.setProduct_name("Soap");
-//        productDTO.setProduct_price(50);
-//        productDTO.setShelf_qty(10);
-//       
-//        try {
-//            boolean addItem = ProductController.addItem(productDTO);
-//            if (addItem) {
-//                System.out.println("product added !");
-//            } else {
-//                System.out.println("Ooops...! Something went wrong");
-//            }
-//        } catch (Exception ex) {
-//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        // add a product
+        ProductDTO productDTO = new ProductDTO();
+        
+        productDTO.setProduct_code("P001");
+        productDTO.setProduct_batch("B001");
+        productDTO.setProduct_name("Soap");
+        productDTO.setProduct_price(50);
+        productDTO.setShelf_qty(10);
+       
+        try {
+            boolean addItem = ProductController.addItem(productDTO);
+            if (addItem) {
+                System.out.println("product added !");
+            } else {
+                System.out.println("Ooops...! Something went wrong");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
 
     }

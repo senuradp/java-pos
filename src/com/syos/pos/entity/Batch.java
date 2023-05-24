@@ -20,25 +20,25 @@ public class Batch {
     private String product_code;
     private double batch_qty;
     private double available_qty;
-    private boolean shelf_status; // in store | in shelf
+    private boolean is_sold; // in store | in shelf
 
     public Batch() {
     }
     
 
-    public Batch(String batch_code, Date expiry_date, Date purchase_date, String product_code, double batch_qty, double available_qty, boolean shelf_status) {
+    public Batch(String batch_code, Date expiry_date, Date purchase_date, String product_code, double batch_qty, double available_qty, boolean is_sold) {
         this.batch_code = batch_code;
         this.purchase_date = purchase_date;
         this.expiry_date = expiry_date;
         this.product_code = product_code;
         this.batch_qty = batch_qty;
         this.available_qty = available_qty;
-        this.shelf_status = shelf_status;
+        this.is_sold = is_sold;
     }
 
     @Override
     public String toString() {
-        return "Batch{" + "Batch code=" + batch_code + ", Expiry date=" + expiry_date + ", Purchase date=" + purchase_date + ", Product code=" + product_code + ", Batch qty=" + batch_qty + ", Available qty=" + available_qty + ", Shelf status=" + shelf_status + '}';
+        return "Batch{" + "Batch code=" + batch_code + ", Expiry date=" + expiry_date + ", Purchase date=" + purchase_date + ", Product code=" + product_code + ", Batch qty=" + batch_qty + ", Available qty=" + available_qty + ", Is sold=" + is_sold + '}';
     }
 
     public String getBatch_code() {
@@ -89,15 +89,12 @@ public class Batch {
         this.available_qty = available_qty;
     }
 
-    public boolean isShelf_status() {
-        return shelf_status;
+    public boolean getIs_sold() {
+        return is_sold;
     }
 
-    public void setShelf_status(boolean shelf_status) {
-        this.shelf_status = shelf_status;
+    public void setIs_sold(boolean is_sold) {
+        this.is_sold = is_sold;
     }
-    
-    
-    
-    
+
 }

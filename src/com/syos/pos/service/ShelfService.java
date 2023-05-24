@@ -32,7 +32,7 @@ public class ShelfService implements IShelfService{
             shelf.setShelf_code(shelfDTO.getShelf_code());
             shelf.setProduct_code(shelfDTO.getProduct_code());
             shelf.setCapacity(shelfDTO.getCapacity());
-            shelf.setProduct_qty(shelfDTO.getProduct_qty());
+            shelf.setAvailable_qty(shelfDTO.getAvailable_qty());
                                    
             return shelfRepositoryDAO.add(shelf);
             
@@ -49,7 +49,7 @@ public class ShelfService implements IShelfService{
             shelf.setShelf_code(shelfDTO.getShelf_code());
             shelf.setProduct_code(shelfDTO.getProduct_code());
             shelf.setCapacity(shelfDTO.getCapacity());
-            shelf.setProduct_qty(shelfDTO.getProduct_qty());
+            shelf.setAvailable_qty(shelfDTO.getAvailable_qty());
             
             return shelfRepositoryDAO.update(shelf);
             
@@ -81,7 +81,7 @@ public class ShelfService implements IShelfService{
                 shelfDTO.setShelf_code(shelf.getShelf_code());
                 shelfDTO.setProduct_code(shelf.getProduct_code());
                 shelfDTO.setCapacity(shelf.getCapacity());
-                shelfDTO.setProduct_qty(shelf.getProduct_qty());
+                shelfDTO.setAvailable_qty(shelf.getAvailable_qty());
 
                 allShelfDTOs.add(shelfDTO);
 

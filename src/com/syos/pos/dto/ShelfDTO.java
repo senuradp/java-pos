@@ -14,7 +14,7 @@ public class ShelfDTO {
     private String shelf_code;
     private String product_code;
     private double capacity;
-    private double product_qty;
+    private double available_qty;
 
     public String getShelf_code() {
         return shelf_code;
@@ -40,14 +40,14 @@ public class ShelfDTO {
         this.capacity = capacity;
     }
 
-    public double getProduct_qty() {
-        return product_qty;
+    public double getAvailable_qty() {
+        return available_qty;
     }
 
-    public void setProduct_qty(double product_qty) {
-        this.product_qty = product_qty;
+    public void setAvailable_qty(double available_qty) {
+        this.available_qty = available_qty;
     }
 
-
+    
     
 }

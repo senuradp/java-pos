@@ -14,22 +14,30 @@ public class Shelf {
     private String shelf_code;
     private String product_code;
     private double capacity;
-    private double product_qty;
+    private double available_qty;
 
     public Shelf() {
     }
 
-    public Shelf(String shelf_code, String product_code, double capacity, double product_qty) {
+    public Shelf(String shelf_code, String product_code, double capacity, double available_qty) {
         this.shelf_code = shelf_code;
         this.product_code = product_code;
         this.capacity = capacity;
-        this.product_qty = product_qty;
+        this.available_qty = available_qty;
     }
 
 
     @Override
     public String toString() {
-        return "Shelf{"+ "Shelf code=" + shelf_code + "Product code=" + product_code + ", Capacity=" + capacity + ", Product qty=" + product_qty + '}';
+        return "Shelf{"+ "Shelf code=" + shelf_code + "Product code=" + product_code + ", Capacity=" + capacity + ", Available qty=" + available_qty + '}';
+    }
+
+    public String getShelf_code() {
+        return shelf_code;
+    }
+
+    public void setShelf_code(String shelf_code) {
+        this.shelf_code = shelf_code;
     }
 
     public String getProduct_code() {
@@ -48,21 +56,14 @@ public class Shelf {
         this.capacity = capacity;
     }
 
-    public double getProduct_qty() {
-        return product_qty;
+    public double getAvailable_qty() {
+        return available_qty;
     }
 
-    public void setProduct_qty(double product_qty) {
-        this.product_qty = product_qty;
+    public void setAvailable_qty(double available_qty) {
+        this.available_qty = available_qty;
     }
-
-    public String getShelf_code() {
-        return shelf_code;
-    }
-
-    public void setShelf_code(String shelf_code) {
-        this.shelf_code = shelf_code;
-    }
+    
     
     
 }
