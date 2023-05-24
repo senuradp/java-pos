@@ -78,9 +78,9 @@ public class ProductService implements IProductService{
     public List<ProductDTO> getAll() throws Exception {
         
         try{
-            List<Product> allItems = productRepositoryDAO.getAll();
-            List<ProductDTO> allItemDTOs = new ArrayList<>();
-            for (Product product : allItems) {
+            List<Product> allProducts = productRepositoryDAO.getAll();
+            List<ProductDTO> allProductDTOs = new ArrayList<>();
+            for (Product product : allProducts) {
                 ProductDTO productDTO = new ProductDTO();
                 productDTO.setProduct_code(product.getProduct_code());
                 productDTO.setProduct_batch(product.getProduct_batch());
@@ -88,10 +88,10 @@ public class ProductService implements IProductService{
                 productDTO.setProduct_price(product.getProduct_price());
                 productDTO.setShelf_qty(product.getShelf_qty());
 
-                allItemDTOs.add(productDTO);
+                allProductDTOs.add(productDTO);
 
             }
-            return allItemDTOs;
+            return allProductDTOs;
         }catch (Exception ex) {
              Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }

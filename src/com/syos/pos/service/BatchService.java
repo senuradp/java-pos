@@ -84,9 +84,9 @@ public class BatchService implements IBatchService{
     public List<BatchDTO> getAll() throws Exception {
         
         try{
-            List<Batch> allItems = batchRepositoryDAO.getAll();
-            List<BatchDTO> allItemDTOs = new ArrayList<>();
-            for (Batch batch : allItems) {
+            List<Batch> allBatchs = batchRepositoryDAO.getAll();
+            List<BatchDTO> allBatchDTOs = new ArrayList<>();
+            for (Batch batch : allBatchs) {
                 BatchDTO batchDTO = new BatchDTO();
                 batchDTO.setBatch_code(batch.getBatch_code());
                 batchDTO.setPurchase_date(batch.getPurchase_date());
@@ -96,10 +96,10 @@ public class BatchService implements IBatchService{
                 batchDTO.setAvailable_qty(batch.getAvailable_qty());
                 batchDTO.setShelf_status(batch.isShelf_status());
 
-                allItemDTOs.add(batchDTO);
+                allBatchDTOs.add(batchDTO);
 
             }
-            return allItemDTOs;
+            return allBatchDTOs;
         }catch (Exception ex) {
              Logger.getLogger(BatchRepository.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -24,7 +24,7 @@ public class BatchRepository implements IBatchRepository{
     @Override
     public boolean add(Batch batch) {
         try{
-            return RepositoryCRUD.executeUpdate("INSERT INTO batch VALUES(?,?,?,?,?,?,?,?)", 0, batch.getBatch_code(), batch.getPurchase_date(), batch.getExpiry_date(), batch.getProduct_code(), batch.getBatch_qty(), batch.getAvailable_qty(), batch.isShelf_status());
+            return RepositoryCRUD.executeUpdate("INSERT INTO batch VALUES(?,?,?,?,?,?,?)", batch.getBatch_code(), batch.getPurchase_date(), batch.getExpiry_date(), batch.getProduct_code(), batch.getBatch_qty(), batch.getAvailable_qty(), batch.isShelf_status());
         }catch (Exception ex) {
              Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }

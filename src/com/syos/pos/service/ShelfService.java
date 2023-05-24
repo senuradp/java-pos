@@ -6,6 +6,7 @@
 package com.syos.pos.service;
 
 import com.syos.pos.core.RepositoryFactory;
+import com.syos.pos.core.ServiceFactory;
 import com.syos.pos.dto.ShelfDTO;
 import com.syos.pos.entity.Shelf;
 import com.syos.pos.repository.ShelfRepository;
@@ -23,16 +24,16 @@ import java.util.logging.Logger;
 public class ShelfService implements IShelfService{
     
     private static final IShelfRepository shelfRepositoryDAO = (IShelfRepository) RepositoryFactory.getInstance().getDAO(RepositoryFactory.RepositoryType.SHELF);
-
+    
     @Override
     public boolean add(ShelfDTO shelfDTO) {
-        try{
+        try{            
             Shelf shelf = new Shelf();
             shelf.setShelf_code(shelfDTO.getShelf_code());
             shelf.setProduct_code(shelfDTO.getProduct_code());
             shelf.setCapacity(shelfDTO.getCapacity());
             shelf.setProduct_qty(shelfDTO.getProduct_qty());
-            
+                                   
             return shelfRepositoryDAO.add(shelf);
             
         }catch (Exception ex) {
@@ -73,19 +74,20 @@ public class ShelfService implements IShelfService{
     @Override
     public List<ShelfDTO> getAll() throws Exception {
         try{
-            List<Shelf> allItems = shelfRepositoryDAO.getAll();
-            List<ShelfDTO> allItemDTOs = new ArrayList<>();
-            for (Shelf shelf : allItems) {
+            List<Shelf> allShelfs = shelfRepositoryDAO.getAll();
+            List<ShelfDTO> allShelfDTOs = new ArrayList<>();
+            for (Shelf shelf : allShelfs) {
                 ShelfDTO shelfDTO = new ShelfDTO();
-                shelf.setShelf_code(shelfDTO.getShelf_code());
-                shelf.setProduct_code(shelfDTO.getProduct_code());
-                shelf.setCapacity(shelfDTO.getCapacity());
-                shelf.setProduct_qty(shelfDTO.getProduct_qty());
+                shelfDTO.setShelf_code(shelf.getShelf_code());
+                shelfDTO.setProduct_code(shelf.getProduct_code());
+                shelfDTO.setCapacity(shelf.getCapacity());
+                shelfDTO.setProduct_qty(shelf.getProduct_qty());
 
-                allItemDTOs.add(shelfDTO);
+                allShelfDTOs.add(shelfDTO);
 
             }
-            return allItemDTOs;
+            return allShelfDTOs;
+            
         }catch (Exception ex) {
              Logger.getLogger(ShelfRepository.class.getName()).log(Level.SEVERE, null, ex);
         }

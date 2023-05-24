@@ -1,36 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.syos.pos.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
-/**
- *
- * @author senu2k
- */
 public class DBConnection {
     
-    private static DBConnection dbConnection;
+    
+    private static final String URL = "jdbc:mysql://localhost:3306/syos";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "";
+    private static DBConnection instance;
     private Connection connection;
 
-    //Singleton design pattern
-    private DBConnection() throws Exception{
-        Class.forName("com.mysql.jdbc.Driver");
-        connection = DriverManager.getConnection("jdbc:mysql//localhost:3306/syos","root","1234");
-    }
-    
-    public static DBConnection getInstance() throws Exception{
-        if (dbConnection==null) {
-            dbConnection = new DBConnection();
+    private DBConnection() {
+        try {
+            // Register the MySQL JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            // Create the connection
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            // Handle the exception appropriately
         }
-        return dbConnection;
     }
-    public Connection getConnection(){
+
+    public static DBConnection getInstance() {
+        if (instance == null) {
+            synchronized (DBConnection.class) {
+                if (instance == null) {
+                    instance = new DBConnection();
+                }
+            }
+        }
+        return instance;
+    }
+
+    public Connection getConnection() {
         return connection;
     }
-    
 }

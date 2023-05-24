@@ -8,8 +8,10 @@ package com.syos.pos.controller;
 import java.util.List;
 
 import com.syos.pos.core.RepositoryFactory;
+import com.syos.pos.core.ServiceFactory;
 import com.syos.pos.dto.ShelfDTO;
 import com.syos.pos.service.ShelfService;
+import com.syos.pos.service.dao.IShelfService;
 
 /**
  *
@@ -17,13 +19,13 @@ import com.syos.pos.service.ShelfService;
  */
 public class ShelfController {
     
-    private static final ShelfService shelfService = (ShelfService)RepositoryFactory.getInstance().getDAO(RepositoryFactory.RepositoryType.SHELF);
+    private static final IShelfService shelfService = (IShelfService)ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.SHELF);
 
-    public static boolean addItem(ShelfDTO shelfDTO) throws Exception {
+    public static boolean addItem(ShelfDTO shelfDTO){
         return shelfService.add(shelfDTO);
     }
     
-    public static boolean updateItem(ShelfDTO shelfDTO) throws Exception{
+    public static boolean updateItem(ShelfDTO shelfDTO){
         return shelfService.update(shelfDTO);
     }
     

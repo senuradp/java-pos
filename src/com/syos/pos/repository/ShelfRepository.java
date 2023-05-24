@@ -24,7 +24,7 @@ public class ShelfRepository implements IShelfRepository{
     @Override
     public boolean add(Shelf shelf) {
         try{
-            return RepositoryCRUD.executeUpdate("INSERT INTO shelf VALUES(?,?,?,?,?)", 0, shelf.getShelf_code(), shelf.getProduct_code(), shelf.getCapacity(), shelf.getProduct_qty());
+            return RepositoryCRUD.executeUpdate("INSERT INTO shelf VALUES(?,?,?,?)", shelf.getShelf_code(), shelf.getProduct_code(), shelf.getCapacity(), shelf.getProduct_qty());
         }catch(Exception ex){
            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -34,7 +34,8 @@ public class ShelfRepository implements IShelfRepository{
     @Override
     public boolean update(Shelf shelf) {
         try{
-                        return RepositoryCRUD.executeUpdate("UPDATE shelf SET shelf_code=?, shelf_code=?, capacity=?, product_qty=? WHERE shelf_code=?" ,shelf.getShelf_code(), shelf.getProduct_code(), shelf.getCapacity(), shelf.getProduct_qty(), shelf.getShelf_code());
+            return RepositoryCRUD.executeUpdate("UPDATE shelf SET shelf_code=?, product_code=?, capacity=?, product_qty=? WHERE shelf_code=?" ,shelf.getShelf_code(), shelf.getProduct_code(), shelf.getCapacity(), shelf.getProduct_qty(), shelf.getShelf_code());
+            
         }catch(Exception ex){
            Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }

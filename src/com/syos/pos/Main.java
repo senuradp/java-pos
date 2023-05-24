@@ -5,10 +5,12 @@
  */
 package com.syos.pos;
 
+import com.syos.pos.controller.ProductController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.syos.pos.controller.ShelfController;
+import com.syos.pos.dto.BatchDTO;
 import com.syos.pos.dto.ProductDTO;
 import com.syos.pos.dto.ShelfDTO;
 
@@ -21,24 +23,26 @@ public class Main {
     public static void main(String[] args) {
         
 
-        // add a shelf
-        ShelfDTO shelfDTO = new ShelfDTO();
-        shelfDTO.setShelf_code("S001");
-        shelfDTO.setProduct_code("");
-        shelfDTO.setCapacity(10);
-        shelfDTO.setProduct_qty(5);
+//        // add a product
+//        ProductDTO productDTO = new ProductDTO();
+//        
+//        productDTO.setProduct_code("P001");
+//        productDTO.setProduct_batch("B001");
+//        productDTO.setProduct_name("Soap");
+//        productDTO.setProduct_price(50);
+//        productDTO.setShelf_qty(10);
+//       
+//        try {
+//            boolean addItem = ProductController.addItem(productDTO);
+//            if (addItem) {
+//                System.out.println("product added !");
+//            } else {
+//                System.out.println("Ooops...! Something went wrong");
+//            }
+//        } catch (Exception ex) {
+//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
-
-        try {
-            boolean addItem = ShelfController.addItem(shelfDTO);
-            if (addItem) {
-                System.out.println("Shelf added !");
-            } else {
-                System.out.println("Ooops...! Something went wrong");
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
     }
     

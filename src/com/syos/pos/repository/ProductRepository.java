@@ -24,7 +24,7 @@ public class ProductRepository implements IProductRepository{
     public boolean add(Product product) {
         
         try {
-            return RepositoryCRUD.executeUpdate("INSERT INTO product VALUES(?,?,?,?,?,?)", 0, product.getProduct_code(), product.getProduct_batch(),product.getProduct_name(), product.getProduct_price(), product.getShelf_qty());
+            return RepositoryCRUD.executeUpdate("INSERT INTO product VALUES(?,?,?,?,?)", product.getProduct_code(), product.getProduct_batch(),product.getProduct_name(), product.getProduct_price(), product.getShelf_qty());
         } catch (Exception ex) {
             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
