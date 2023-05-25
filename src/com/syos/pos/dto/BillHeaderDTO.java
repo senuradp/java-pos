@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.syos.pos.entity;
+package com.syos.pos.dto;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author senu2k
  */
-public class BillHeader {
+public class BillHeaderDTO {
     
     private String bill_serial_number;
     private String customer_id;
@@ -22,19 +24,28 @@ public class BillHeader {
     private double amount_tendered;
     private double discount;
     private double change;
-
-    public BillHeader() {
+    
+    private List<BillDetailDTO> typeOfBillDetails;
+    
+    
+    public BillHeaderDTO() {
+        typeOfBillDetails = new ArrayList<BillDetailDTO>();
+    } 
+    
+    public void addProduct(String product_code, String product_name, double qty, double price){
+        BillDetailDTO product = new BillDetailDTO(this.bill_serial_number, product_name, qty, price);
+        typeOfBillDetails.add(product);
+        calculateTotalPrice();
     }
-
-    public BillHeader(String bill_serial_number, String customer_id, String payment_type, Date date, double total_bill_price, double amount_tendered, double discount, double change) {
-        this.bill_serial_number = bill_serial_number;
-        this.customer_id = customer_id;
-        this.payment_type = payment_type;
-        this.date = date;
-        this.total_bill_price = total_bill_price;
-        this.amount_tendered = amount_tendered;
-        this.discount = discount;
-        this.change = change;
+    
+    public void calculateTotalPrice(){
+        double sum = 0;
+        
+        for(int i=0; i<typeOfBillDetails.size(); i++){
+            sum = sum + typeOfBillDetails.get(i).getTotal_item_price();
+        }
+        
+        this.total_bill_price = sum - this.discount;
     }
 
     public String getBill_serial_number() {
@@ -89,8 +100,10 @@ public class BillHeader {
         return discount;
     }
 
+    // when we get the discount again calculate the toatal price and then go to total price and update the discounted value
     public void setDiscount(double discount) {
         this.discount = discount;
+        calculateTotalPrice();
     }
 
     public double getChange() {
@@ -100,7 +113,13 @@ public class BillHeader {
     public void setChange(double change) {
         this.change = change;
     }
-    
-    
+
+    public List<BillDetailDTO> getTypeOfBillDetails() {
+        return typeOfBillDetails;
+    }
+
+    public void setTypeOfBillDetails(List<BillDetailDTO> typeOfBillDetails) {
+        this.typeOfBillDetails = typeOfBillDetails;
+    }
     
 }

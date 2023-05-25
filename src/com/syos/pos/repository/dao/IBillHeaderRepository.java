@@ -5,15 +5,12 @@
  */
 package com.syos.pos.repository.dao;
 
-import com.syos.pos.entity.Product;
+import com.syos.pos.entity.BillHeader;
 
 /**
  *
  * @author senu2k
  */
-public interface IProductRepository extends IRepositoryDAO<Product>{
-    
-//    get product by code (product code)
-        Product getProductByCode(String code) throws Exception;
+public interface IBillHeaderRepository extends IRepositoryDAO<BillHeader>{
     
 }

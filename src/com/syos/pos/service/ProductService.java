@@ -92,5 +92,17 @@ public class ProductService implements IProductService{
         return null;
                 
     }
+
+    @Override
+    public ProductDTO getProductByCode(String code) throws Exception {
+        Product getProductByCode = productRepositoryDAO.getProductByCode(code);
+        
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setProduct_code(getProductByCode.getProduct_code());
+        productDTO.setProduct_name(getProductByCode.getProduct_name());
+        productDTO.setProduct_price(getProductByCode.getProduct_price());
+        
+        return productDTO;
+    }
     
 }

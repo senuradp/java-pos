@@ -5,16 +5,12 @@
  */
 package com.syos.pos.service.dao;
 
-import com.syos.pos.dto.ProductDTO;
+import com.syos.pos.dto.BillHeaderDTO;
 
 /**
  *
  * @author senu2k
  */
-public interface IProductService extends IServiceDAO<ProductDTO>{
-    
-//    get product by code
-    ProductDTO getProductByCode(String code)throws Exception;
-    
+public interface IBillHeaderService extends IServiceDAO<BillHeaderDTO>{
     
 }

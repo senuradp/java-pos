@@ -6,8 +6,11 @@
 package com.syos.pos.core;
 
 
+
 import com.syos.pos.repository.dao.IRepositoryDAO;
 import com.syos.pos.service.BatchService;
+import com.syos.pos.service.BillDetailService;
+import com.syos.pos.service.BillHeaderService;
 
 import com.syos.pos.service.ProductService;
 import com.syos.pos.service.ShelfService;
@@ -24,8 +27,8 @@ public class ServiceFactory {
     private final ProductService productService;
     private final BatchService batchService;
     private final ShelfService shelfService;
-//    private final BillHeaderRepository billHeaderRepository;
-//    private final BillDetailRepository billDetailfRepository;
+    private final BillHeaderService billHeaderService;
+    private final BillDetailService billDetailService;
 
     public enum ServiceType {
         PRODUCT, BATCH, SHELF, BILL_HEADER, BILL_DETAIL;
@@ -35,8 +38,8 @@ public class ServiceFactory {
         productService = new ProductService();
         batchService = new BatchService();
         shelfService = new ShelfService();
-//        billHeaderRepository = new BillHeaderRepository();
-//        billDetailfRepository = new BillDetailRepository();
+        billHeaderService= new BillHeaderService();
+        billDetailService = new BillDetailService();
     }
     
     public static ServiceFactory getInstance(){
@@ -57,10 +60,10 @@ public class ServiceFactory {
                 return batchService;
             case SHELF:
                 return shelfService;
-//            case BILL_HEADER:
-//                return billHeaderRepository;
-//            case BILL_DETAIL:
-//                return billDetailfRepository;
+            case BILL_HEADER:
+                return billHeaderService;
+            case BILL_DETAIL:
+                return billDetailService;
             default:
                 return null;
         }

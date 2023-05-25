@@ -35,4 +35,8 @@ public class ProductController {
         return productService.getAll();
     }
     
+    public static ProductDTO getProductByCode(String code)throws Exception{
+        return productService.getProductByCode(code);
+    }    
+    
 }

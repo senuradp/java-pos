@@ -23,8 +23,8 @@ public class RepositoryFactory {
     private final ProductRepository itemRepository;
     private final BatchRepository batchRepository;
     private final ShelfRepository shelfRepository;
-//    private final BillHeaderRepository billHeaderRepository;
-//    private final BillDetailRepository billDetailfRepository;
+    private final BillHeaderRepository billHeaderRepository;
+    private final BillDetailRepository billDetailRepository;
 
     public enum RepositoryType {
         PRODUCT, BATCH, SHELF, BILL_HEADER, BILL_DETAIL;
@@ -34,8 +34,8 @@ public class RepositoryFactory {
         itemRepository = new ProductRepository();
         batchRepository = new BatchRepository();
         shelfRepository = new ShelfRepository();
-//        billHeaderRepository = new BillHeaderRepository();
-//        billDetailfRepository = new BillDetailRepository();
+        billHeaderRepository = new BillHeaderRepository();
+        billDetailRepository = new BillDetailRepository();
     }
     
     public static RepositoryFactory getInstance(){
@@ -56,10 +56,10 @@ public class RepositoryFactory {
                 return batchRepository;
             case SHELF:
                 return shelfRepository;
-//            case BILL_HEADER:
-//                return billHeaderRepository;
-//            case BILL_DETAIL:
-//                return billDetailfRepository;
+            case BILL_HEADER:
+                return billHeaderRepository;
+            case BILL_DETAIL:
+                return billDetailRepository;
             default:
                 return null;
         }

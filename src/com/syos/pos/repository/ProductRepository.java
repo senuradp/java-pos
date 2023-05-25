@@ -69,5 +69,19 @@ public class ProductRepository implements IProductRepository{
         
         return arrayList;
     }
+
+    @Override
+    public Product getProductByCode(String code) throws Exception {
+        ResultSet rst = RepositoryCRUD.executeQuery("select * from product where product_code=?", code);
+        Product product = new Product();
+        if (rst.next()) {
+            product = new Product(
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getDouble(3)
+            );
+        }
+        return product;
+    }
     
 }
