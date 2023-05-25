@@ -29,7 +29,6 @@ public class BillHeaderService implements IBillHeaderService{
         try{
             BillHeader billHeader = new BillHeader();
             billHeader.setBill_serial_number(billHeaderDTO.getBill_serial_number());
-            billHeader.setCustomer_id(billHeaderDTO.getCustomer_id());
             billHeader.setPayment_type(billHeaderDTO.getPayment_type());
             billHeader.setDate(billHeaderDTO.getDate());
             billHeader.setTotal_bill_price(billHeaderDTO.getTotal_bill_price());
@@ -51,7 +50,6 @@ public class BillHeaderService implements IBillHeaderService{
         try{
             BillHeader billHeader = new BillHeader();
             billHeader.setBill_serial_number(billHeaderDTO.getBill_serial_number());
-            billHeader.setCustomer_id(billHeaderDTO.getCustomer_id());
             billHeader.setPayment_type(billHeaderDTO.getPayment_type());
             billHeader.setDate(billHeaderDTO.getDate());
             billHeader.setTotal_bill_price(billHeaderDTO.getTotal_bill_price());
@@ -90,9 +88,7 @@ public class BillHeaderService implements IBillHeaderService{
             for (BillHeader billHeader : allBillHeaders) {
                 
                 BillHeaderDTO billHeaderDTO = new BillHeaderDTO();
-//                billDetailDTO.setBill_serial_number(billDetail.getBill_serial_number());
                 billHeaderDTO.setBill_serial_number(billHeader.getBill_serial_number());
-                billHeaderDTO.setCustomer_id(billHeader.getCustomer_id());
                 billHeaderDTO.setPayment_type(billHeader.getPayment_type());
                 billHeaderDTO.setDate(billHeader.getDate());
                 billHeaderDTO.setTotal_bill_price(billHeader.getTotal_bill_price());

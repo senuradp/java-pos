@@ -24,7 +24,7 @@ public class BillHeaderRepository implements IBillHeaderRepository{
     public boolean add(BillHeader billHeader) {
         
         try {
-            return RepositoryCRUD.executeUpdate("INSERT INTO bill_header VALUES(?,?,?,?,?,?,?,?)", billHeader.getBill_serial_number(),billHeader.getCustomer_id(),billHeader.getPayment_type(),billHeader.getDate(),billHeader.getTotal_bill_price(),billHeader.getAmount_tendered(),billHeader.getDiscount(),billHeader.getChange());
+            return RepositoryCRUD.executeUpdate("INSERT INTO bill_header VALUES(?,?,?,?,?,?,?)", billHeader.getBill_serial_number(),billHeader.getPayment_type(),billHeader.getDate(),billHeader.getTotal_bill_price(),billHeader.getAmount_tendered(),billHeader.getDiscount(),billHeader.getChange());
         } catch (Exception ex) {
             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -35,7 +35,7 @@ public class BillHeaderRepository implements IBillHeaderRepository{
     @Override
     public boolean update(BillHeader billHeader) {
         try {
-            return RepositoryCRUD.executeUpdate("UPDATE bill_header SET bill_serial_number=?, customer_id=?, payment_type=?, date=?, total_bill_price=?, amount_tendered=?, discount=?, balance=? WHERE bill_serial_number=?", billHeader.getBill_serial_number(),billHeader.getCustomer_id(),billHeader.getPayment_type(),billHeader.getDate(),billHeader.getTotal_bill_price(),billHeader.getAmount_tendered(),billHeader.getDiscount(),billHeader.getChange(), billHeader.getBill_serial_number());
+            return RepositoryCRUD.executeUpdate("UPDATE bill_header SET bill_serial_number=?, payment_type=?, date=?, total_bill_price=?, amount_tendered=?, discount=?, balance=? WHERE bill_serial_number=?", billHeader.getBill_serial_number(),billHeader.getPayment_type(),billHeader.getDate(),billHeader.getTotal_bill_price(),billHeader.getAmount_tendered(),billHeader.getDiscount(),billHeader.getChange(), billHeader.getBill_serial_number());
         } catch (Exception ex) {
             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -59,13 +59,12 @@ public class BillHeaderRepository implements IBillHeaderRepository{
         while (rst.next()) {
             BillHeader billHeaders = new BillHeader();
                 billHeaders.setBill_serial_number(rst.getString(1));
-                billHeaders.setCustomer_id(rst.getString(2));
-                billHeaders.setPayment_type(rst.getString(3));
-                billHeaders.setDate(rst.getDate(4));
-                billHeaders.setTotal_bill_price(rst.getDouble(5));
-                billHeaders.setAmount_tendered(rst.getDouble(6));
-                billHeaders.setDiscount(rst.getDouble(7));
-                billHeaders.setChange(rst.getDouble(8));
+                billHeaders.setPayment_type(rst.getString(2));
+                billHeaders.setDate(rst.getDate(3));
+                billHeaders.setTotal_bill_price(rst.getDouble(4));
+                billHeaders.setAmount_tendered(rst.getDouble(5));
+                billHeaders.setDiscount(rst.getDouble(6));
+                billHeaders.setChange(rst.getDouble(7));
             
             arrayList.add(billHeaders);
         }

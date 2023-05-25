@@ -15,7 +15,6 @@ import java.util.Date;
 public class BillHeader {
     
     private String bill_serial_number;
-    private String customer_id;
     private String payment_type;
     private Date date;
     private double total_bill_price;
@@ -26,9 +25,8 @@ public class BillHeader {
     public BillHeader() {
     }
 
-    public BillHeader(String bill_serial_number, String customer_id, String payment_type, Date date, double total_bill_price, double amount_tendered, double discount, double change) {
+    public BillHeader(String bill_serial_number, String payment_type, Date date, double total_bill_price, double amount_tendered, double discount, double change) {
         this.bill_serial_number = bill_serial_number;
-        this.customer_id = customer_id;
         this.payment_type = payment_type;
         this.date = date;
         this.total_bill_price = total_bill_price;
@@ -43,14 +41,6 @@ public class BillHeader {
 
     public void setBill_serial_number(String bill_serial_number) {
         this.bill_serial_number = bill_serial_number;
-    }
-
-    public String getCustomer_id() {
-        return customer_id;
-    }
-
-    public void setCustomer_id(String customer_id) {
-        this.customer_id = customer_id;
     }
 
     public String getPayment_type() {

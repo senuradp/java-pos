@@ -21,10 +21,18 @@ import com.syos.pos.service.OrderService;
  */
 public class Main {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         
         // using order service, create an order and add orders
 
+        OrderService orderService = OrderService.getInstance();
+        orderService.createOrder();
+        orderService.addOrderProduct("P001", 1);
+        orderService.addOrderProduct("P002", 2);
+        
+        orderService.addDiscount(10);
+
+        orderService.checkoutPay(300, "Cash");
 
 
     }

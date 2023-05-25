@@ -78,10 +78,12 @@ public class OrderService {
         return billHeaderDTO.getTotal_bill_price();
     }
 
-    public double checkoutPay(double amount_tendered) throws Exception {
-        double balance = 0;
+    public double checkoutPay(double amount_tendered, String payment_type) throws Exception {
 
-        balance = calculateBalancePay(amount_tendered);
+        // pass the payment type to bill header
+        billHeaderDTO.setPayment_type(payment_type);
+
+        double balance = calculateBalancePay(amount_tendered);
 
         billHeaderService.add(billHeaderDTO);
         
