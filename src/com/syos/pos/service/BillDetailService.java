@@ -29,6 +29,7 @@ public class BillDetailService implements IBillDetailService{
         try{
             BillDetail billDetail = new BillDetail();
             billDetail.setBill_serial_number(billDetailDTO.getBill_serial_number());
+            billDetail.setProduct_code(billDetailDTO.getProduct_code());
             billDetail.setItem_name(billDetailDTO.getItem_name());
             billDetail.setItem_qty(billDetailDTO.getItem_qty());
             billDetail.setItem_price(billDetailDTO.getTotal_item_price());
@@ -47,6 +48,7 @@ public class BillDetailService implements IBillDetailService{
         try{
             BillDetail billDetail = new BillDetail();
             billDetail.setBill_serial_number(billDetailDTO.getBill_serial_number());
+            billDetail.setProduct_code(billDetailDTO.getProduct_code());
             billDetail.setItem_name(billDetailDTO.getItem_name());
             billDetail.setItem_qty(billDetailDTO.getItem_qty());
             billDetail.setItem_price(billDetailDTO.getTotal_item_price());
@@ -80,6 +82,7 @@ public class BillDetailService implements IBillDetailService{
                 
                 BillDetailDTO billDetailDTO = new BillDetailDTO();
                 billDetailDTO.setBill_serial_number(billDetail.getBill_serial_number());
+                billDetailDTO.setProduct_code(billDetail.getProduct_code());
                 billDetailDTO.setItem_name(billDetail.getItem_name());
                 billDetailDTO.setItem_qty(billDetail.getItem_qty());
                 billDetailDTO.setItem_price(billDetail.getItem_price());

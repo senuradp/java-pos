@@ -12,5 +12,9 @@ import com.syos.pos.dto.ShelfDTO;
  * @author senu2k
  */
 public interface IShelfService extends IServiceDAO<ShelfDTO>{
+
+    public boolean updateShelf(String product_code, double qty);
+
+    public double getAvailableQty(String product_code);
     
 }

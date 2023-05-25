@@ -12,12 +12,14 @@ package com.syos.pos.dto;
 public class BillDetailDTO {
     
     private String bill_serial_number;
+    private String product_code;
     private String item_name;
     private double item_qty;
     private double item_price;
     private double total_item_price;
 
-    public BillDetailDTO(String bill_serial_number, String item_name, double item_qty, double item_price) {
+    public BillDetailDTO(String bill_serial_number, String product_code, String item_name, double item_qty, double item_price) {
+        this.product_code = product_code;
         this.bill_serial_number = bill_serial_number;
         this.item_name = item_name;
         this.item_qty = item_qty;
@@ -37,6 +39,15 @@ public class BillDetailDTO {
     public void setBill_serial_number(String bill_serial_number) {
         this.bill_serial_number = bill_serial_number;
     }
+
+    public String getProduct_code() {
+        return product_code;
+    }
+
+    public void setProduct_code(String product_code) {
+        this.product_code = product_code;
+    }
+
 
     public String getItem_name() {
         return item_name;

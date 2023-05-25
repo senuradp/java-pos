@@ -12,5 +12,11 @@ import com.syos.pos.entity.Shelf;
  * @author senu2k
  */
 public interface IShelfRepository extends IRepositoryDAO<Shelf>{
+
+    // update stock based on parameters product code and qty
+    boolean updateShelf(String product_code, double qty) throws Exception;
+
+    // get available qty based on product code
+    double getAvailableQty(String product_code) throws Exception;
     
 }

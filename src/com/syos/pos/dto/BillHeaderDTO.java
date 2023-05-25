@@ -33,7 +33,7 @@ public class BillHeaderDTO {
     } 
     
     public void addProduct(String product_code, String product_name, double qty, double price){
-        BillDetailDTO product = new BillDetailDTO(this.bill_serial_number, product_name, qty, price);
+        BillDetailDTO product = new BillDetailDTO(this.bill_serial_number, product_code, product_name, qty, price);
         typeOfBillDetails.add(product);
         calculateTotalPrice();
     }

@@ -70,5 +70,48 @@ public class ShelfRepository implements IShelfRepository{
         return arrayList;
         
     }
+
+    @Override
+    public boolean updateShelf(String product_code, double qty) throws Exception {
+        try{
+            // return RepositoryCRUD.executeUpdate("UPDATE shelf SET available_qty = available_qty - ? WHERE product_code = ?", qty, product_code);
+            // check if enough items in the shelf then update shelf
+            ResultSet rst = RepositoryCRUD.executeQuery("SELECT * FROM shelf WHERE product_code = ?", product_code);
+            if (rst.next()) {
+                double available_qty = rst.getDouble(4);
+                if (available_qty >= qty) {
+                    return RepositoryCRUD.executeUpdate("UPDATE shelf SET available_qty = available_qty - ? WHERE product_code = ?", qty, product_code);
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+
+
+        }catch(Exception ex){
+           Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    @Override
+    public double getAvailableQty(String product_code) throws Exception {
+        try{
+            ResultSet rst = RepositoryCRUD.executeQuery("SELECT * FROM shelf WHERE product_code = ?", product_code);
+            // what is rst.next() 
+            // rst.next() is a boolean value
+            // if there is a value in the result set then rst.next() will return true else false
+
+            if (rst.next()) {
+                return rst.getDouble(4);
+            } else {
+                return 0;
+            }
+        }catch(Exception ex){
+           Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
     
 }

@@ -12,6 +12,7 @@ package com.syos.pos.entity;
 public class BillDetail {
     
     private String bill_serial_number;
+    private String product_code;
     private String item_name;
     private double item_qty;
     private double item_price;
@@ -20,8 +21,9 @@ public class BillDetail {
     public BillDetail() {
     }
 
-    public BillDetail(String bill_serial_number, String item_name, double item_qty, double item_price, double total_item_price) {
+    public BillDetail(String bill_serial_number, String product_code, String item_name, double item_qty, double item_price, double total_item_price) {
         this.bill_serial_number = bill_serial_number;
+        this.product_code = product_code;
         this.item_name = item_name;
         this.item_qty = item_qty;
         this.item_price = item_price;
@@ -36,6 +38,16 @@ public class BillDetail {
     public void setBill_serial_number(String bill_serial_number) {
         this.bill_serial_number = bill_serial_number;
     }
+
+    public String getProduct_code() {
+        return product_code;
+    }
+
+    public void setProduct_code(String product_code) {
+        this.product_code = product_code;
+    }
+    
+    
 
     public String getItem_name() {
         return item_name;

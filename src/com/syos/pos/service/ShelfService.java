@@ -94,5 +94,25 @@ public class ShelfService implements IShelfService{
         
         return null;
     }
+
+    @Override
+    public boolean updateShelf(String product_code, double qty) {
+        try{
+            return shelfRepositoryDAO.updateShelf(product_code, qty);
+        }catch (Exception ex) {
+             Logger.getLogger(ShelfRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    @Override
+    public double getAvailableQty(String product_code) {
+        try{
+            return shelfRepositoryDAO.getAvailableQty(product_code);
+        }catch (Exception ex) {
+             Logger.getLogger(ShelfRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
     
 }
