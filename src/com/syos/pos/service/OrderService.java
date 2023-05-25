@@ -84,6 +84,9 @@ public class OrderService {
         billHeaderDTO.setPayment_type(payment_type);
 
         double balance = calculateBalancePay(amount_tendered);
+        
+        billHeaderDTO.setAmount_tendered(amount_tendered);
+        billHeaderDTO.setChange(balance);
 
         billHeaderService.add(billHeaderDTO);
         
@@ -124,14 +127,16 @@ public class OrderService {
         return serial_number;
     }
 
-    public double calculateTotalPrice(double price, double qty) {
-        double total_price = 0;
-
-        return 0;
-    }
+//    public double calculateTotalPrice(double price, double qty) {
+//        double total_price = 0;
+//
+//        return 0;
+//    }
 
     public double calculateBalancePay(double amount_tendered) {
         double balance = 0;
+        
+        balance = amount_tendered - billHeaderDTO.getTotal_bill_price();
 
         return balance;
     }

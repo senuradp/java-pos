@@ -44,7 +44,9 @@ public class BillHeaderDTO {
             sum = sum + typeOfBillDetails.get(i).getTotal_item_price();
         }
         
-        this.total_bill_price = sum - this.discount;
+        double discountAmount = sum * (this.discount / 100);
+        this.total_bill_price = sum - discountAmount;
+    
     }
 
     public String getBill_serial_number() {
