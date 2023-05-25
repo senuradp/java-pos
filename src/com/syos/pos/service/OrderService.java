@@ -9,6 +9,8 @@ import com.syos.pos.core.ServiceFactory;
 import com.syos.pos.dto.BillDetailDTO;
 import com.syos.pos.dto.BillHeaderDTO;
 import com.syos.pos.repository.ShelfRepository;
+import com.syos.pos.service.dao.IBillDetailService;
+import com.syos.pos.service.dao.IBillHeaderService;
 import com.syos.pos.service.dao.IProductService;
 import com.syos.pos.service.dao.IShelfService;
 import java.text.SimpleDateFormat;
@@ -24,12 +26,13 @@ public class OrderService {
 
     private static OrderService orderServiceInstance;
     private BillHeaderDTO billHeaderDTO;
+    private BillDetailDTO billDetailDTO;
 
-    private static final IProductService productService = (IProductService) ServiceFactory.getInstance()
-            .getDAO(ServiceFactory.ServiceType.PRODUCT);
-    private static final IShelfService shelfService = (IShelfService) ServiceFactory.getInstance()
-            .getDAO(ServiceFactory.ServiceType.SHELF);
-
+    private static final IProductService productService = (IProductService) ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.PRODUCT);
+    private static final IShelfService shelfService = (IShelfService) ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.SHELF);
+    private static final IBillHeaderService billHeaderService = (IBillHeaderService) ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.BILL_HEADER);
+    private static final IBillDetailService billDetailService = (IBillDetailService) ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.BILL_DETAIL);
+    
     private OrderService() {
     }
 
@@ -56,7 +59,7 @@ public class OrderService {
 
         // productService.get // product by code (this gives the name and price and
         // thers and pass to th blow function)
-        billHeaderDTO.addProduct(product_code, "test", qty, qty);
+        billHeaderDTO.addProduct(product_code, product_code, qty, total_price);;
 
         return billHeaderDTO.getTotal_bill_price();
     }
@@ -74,13 +77,20 @@ public class OrderService {
 
         balance = calculateBalancePay(amount_tendered);
 
+        billHeaderService.add(billHeaderDTO);
+        
         List<BillDetailDTO> billDetail = billHeaderDTO.getTypeOfBillDetails();
 
         for (int i = 0; i < billDetail.size(); i++) {
+            
             BillDetailDTO billDetailDTO = billDetail.get(i);
+
+            //save
+            billDetailService.add(billDetailDTO);
+
+            //update
             String product_code = billDetailDTO.getProduct_code();
             double qty = billDetailDTO.getItem_qty();
-
             updateShelf(product_code, qty);
         }
 
