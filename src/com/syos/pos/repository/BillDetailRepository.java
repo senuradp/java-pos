@@ -35,7 +35,7 @@ public class BillDetailRepository implements IBillDetailRepository{
     @Override
     public boolean update(BillDetail billDetail) {
         try {
-            return RepositoryCRUD.executeUpdate("UPDATE bill_detail SET bill_serial_number=?, product_code=?, product_name=?, product_qty=?, product_price=?, total_bill_price=? WHERE bill_serial_number=?",billDetail.getBill_serial_number(), billDetail.getProduct_code(), billDetail.getItem_name(), billDetail.getItem_qty(), billDetail.getItem_price(), billDetail.getTotal_item_price(),billDetail.getBill_serial_number());
+            return RepositoryCRUD.executeUpdate("UPDATE bill_detail SET bill_serial_number=?, product_code=?, product_name=?, product_qty=?, product_price=?, total_item_price=? WHERE bill_serial_number=?",billDetail.getBill_serial_number(), billDetail.getProduct_code(), billDetail.getItem_name(), billDetail.getItem_qty(), billDetail.getItem_price(), billDetail.getTotal_item_price(),billDetail.getBill_serial_number());
         } catch (Exception ex) {
             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
