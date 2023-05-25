@@ -8,6 +8,8 @@ package com.syos.pos.service;
 import com.syos.pos.core.ServiceFactory;
 import com.syos.pos.dto.BillDetailDTO;
 import com.syos.pos.dto.BillHeaderDTO;
+import com.syos.pos.dto.ProductDTO;
+import com.syos.pos.entity.Product;
 import com.syos.pos.repository.ShelfRepository;
 import com.syos.pos.service.dao.IBillDetailService;
 import com.syos.pos.service.dao.IBillHeaderService;
@@ -54,12 +56,16 @@ public class OrderService {
         return billHeaderDTO.getBill_serial_number();
     }
 
-    public double addOrderProduct(String product_code, double qty) {
+    public double addOrderProduct(String product_code, double qty) throws Exception {
         double total_price = 0;
 
         // productService.get // product by code (this gives the name and price and
         // thers and pass to th blow function)
-        billHeaderDTO.addProduct(product_code, product_code, qty, total_price);;
+        // productService.getProductByCode(product_code);
+
+        ProductDTO product = productService.getProductByCode(product_code);
+        
+        billHeaderDTO.addProduct(product_code, product.getProduct_name(), qty, product.getProduct_price());
 
         return billHeaderDTO.getTotal_bill_price();
     }
