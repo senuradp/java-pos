@@ -107,5 +107,15 @@ public class BatchService implements IBatchService{
         return null;
         
     }
+
+    // @Override
+    // public boolean updateBatchQty(String product_code, double qty) throws Exception {
+    //         try{
+    //             return batchRepositoryDAO.updateBatchQty(product_code, qty);
+    //         }catch (Exception ex) {
+    //             Logger.getLogger(BatchRepository.class.getName()).log(Level.SEVERE, null, ex);
+    //         }
+    //         return false;
+    // }
     
 }

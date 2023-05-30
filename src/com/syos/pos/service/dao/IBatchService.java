@@ -13,4 +13,7 @@ import com.syos.pos.dto.BatchDTO;
  */
 public interface IBatchService extends IServiceDAO<BatchDTO>{
     
+    // update batch qty by product code
+    // boolean updateBatchQty(String product_code, double qty) throws Exception;
+
 }

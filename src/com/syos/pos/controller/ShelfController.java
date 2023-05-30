@@ -36,5 +36,10 @@ public class ShelfController {
     public static List<ShelfDTO> getAll() throws Exception{
         return shelfService.getAll();
     }
+
+    // restock
+    public boolean reStockShelf(String product_code, double restock_qty) throws Exception{
+        return shelfService.reStockShelf(product_code, restock_qty);
+    }
     
 }

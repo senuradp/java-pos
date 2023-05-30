@@ -14,4 +14,7 @@ import com.syos.pos.entity.Product;
  */
 public interface IBatchRepository extends IRepositoryDAO<Batch>{
     
+    // update batch qty by product code
+    // boolean updateBatchQty(String product_code, double qty) throws Exception;
+
 }

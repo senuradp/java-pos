@@ -6,6 +6,7 @@
 package com.syos.pos.controller;
 
 import com.syos.pos.core.RepositoryFactory;
+import com.syos.pos.core.ServiceFactory;
 import com.syos.pos.dto.BatchDTO;
 import com.syos.pos.service.BatchService;
 import com.syos.pos.service.dao.IBatchService;
@@ -17,17 +18,17 @@ import java.util.List;
  */
 public class BatchController {
  
-    private static final IBatchService batchService = (IBatchService)RepositoryFactory.getInstance().getDAO(RepositoryFactory.RepositoryType.BATCH);
+    private static final IBatchService batchService = (IBatchService)ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.BATCH);
 
-    public static boolean addItem(BatchDTO batchDTO){
+    public static boolean addBatch(BatchDTO batchDTO){
         return batchService.add(batchDTO);
     }
     
-    public static boolean updateItem(BatchDTO batchDTO){
+    public static boolean updateBatch(BatchDTO batchDTO){
         return batchService.update(batchDTO);
     }
     
-    public static boolean deleteItem(String code) throws Exception{
+    public static boolean deleteBatch(String code) throws Exception{
        return batchService.delete(code);
     }
 
@@ -35,4 +36,9 @@ public class BatchController {
         return batchService.getAll();
     }
     
+    // udpate batch qty
+    // public static boolean updateBatchQty(String product_code, double qty) throws Exception{
+    //     return batchService.updateBatchQty(product_code, qty);
+    // }
+
 }

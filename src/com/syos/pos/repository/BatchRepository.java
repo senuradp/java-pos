@@ -74,5 +74,17 @@ public class BatchRepository implements IBatchRepository{
         
         return arrayList;
     }
+
+    // @Override
+    // public boolean updateBatchQty(String product_code, double qty) throws Exception {
+    //     try{
+    //         // update batch qty for product code
+    //         return RepositoryCRUD.executeUpdate("UPDATE batch SET available_qty=? WHERE product_code=?", qty, product_code);
+
+    //     }catch (Exception ex) {
+    //          Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
+    //     }
+    //     return false;
+    // }
     
 }

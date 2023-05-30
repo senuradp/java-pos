@@ -114,5 +114,35 @@ public class ShelfService implements IShelfService{
         }
         return 0;
     }
+
+    @Override
+    public boolean checkExpiryDate(String product_code, String batch_code) {
+        try{
+            return shelfRepositoryDAO.checkExpiryDate(product_code, batch_code);
+        }catch (Exception ex) {
+             Logger.getLogger(ShelfRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean reStockShelf(String product_code, double qty) {
+        try{
+            return shelfRepositoryDAO.reStockShelf(product_code, qty);
+        }catch (Exception ex) {
+             Logger.getLogger(ShelfRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    @Override
+    public String getBatchCode(String product_code) {
+        try{
+            return shelfRepositoryDAO.getBatchCode(product_code);
+        }catch (Exception ex) {
+             Logger.getLogger(ShelfRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
     
 }
