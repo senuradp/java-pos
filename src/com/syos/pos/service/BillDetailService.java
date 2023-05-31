@@ -32,7 +32,7 @@ public class BillDetailService implements IBillDetailService{
             billDetail.setProduct_code(billDetailDTO.getProduct_code());
             billDetail.setItem_name(billDetailDTO.getItem_name());
             billDetail.setItem_qty(billDetailDTO.getItem_qty());
-            billDetail.setItem_price(billDetailDTO.getTotal_item_price());
+            billDetail.setItem_price(billDetailDTO.getItem_price());
             billDetail.setTotal_item_price(billDetailDTO.getTotal_item_price());
 
            return billDetailRepositoryDAO.add(billDetail);

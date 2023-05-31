@@ -102,11 +102,23 @@ public class OrderService {
             //update
             String product_code = billDetailDTO.getProduct_code();
             double qty = billDetailDTO.getItem_qty();
+            
+            
+            double availableShelfQty = getAvailableQty(product_code);
+
+            qty = availableShelfQty - qty;
+
             updateShelf(product_code, qty);
         }
 
 
         return balance;
+    }
+
+    public double getAvailableQty(String product_code) throws Exception {
+
+        return shelfService.getAvailableQty(product_code);
+
     }
 
     public void updateShelf(String product_code, double qty) throws Exception {
