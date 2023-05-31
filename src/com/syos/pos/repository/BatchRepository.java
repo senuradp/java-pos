@@ -35,7 +35,7 @@ public class BatchRepository implements IBatchRepository{
     @Override
     public boolean update(Batch batch) {
         try{
-            return RepositoryCRUD.executeUpdate("UPDATE batch SET batch_code=?, purchase_date=?,expiry_date=?,product_code=?, batch_qty=?, available_qty=?, is_sold=? WHERE product_code=?" ,batch.getBatch_code(), batch.getPurchase_date(), batch.getExpiry_date(), batch.getProduct_code(), batch.getBatch_qty(), batch.getAvailable_qty(), batch.getIs_sold(), batch.getBatch_code());
+            return RepositoryCRUD.executeUpdate("UPDATE batch SET batch_code=?, purchase_date=?,expiry_date=?,product_code=?, batch_qty=?, available_qty=?, is_sold=? WHERE batch_code=?" ,batch.getBatch_code(), batch.getPurchase_date(), batch.getExpiry_date(), batch.getProduct_code(), batch.getBatch_qty(), batch.getAvailable_qty(), batch.getIs_sold(), batch.getBatch_code());
         }catch (Exception ex) {
              Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -75,6 +75,36 @@ public class BatchRepository implements IBatchRepository{
         return arrayList;
     }
 
+    @Override
+    public boolean checkBatchCodeExists(String batch_code) throws Exception {
+        // check if batch code exists in database
+        ResultSet rst = RepositoryCRUD.executeQuery("SELECT * FROM batch WHERE batch_code = ?", batch_code);
+        if (rst.next()) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Batch getBatchDetails(String batch_code) throws Exception {
+        // get batch details
+        ResultSet rst = RepositoryCRUD.executeQuery("SELECT * FROM batch WHERE batch_code = ?", batch_code);
+        if (rst.next()) {
+            Batch batch = new Batch();
+            batch.setBatch_code(rst.getString(1));
+            batch.setPurchase_date(rst.getDate(2));
+            batch.setExpiry_date(rst.getDate(3));
+            batch.setProduct_code(rst.getString(4));
+            batch.setBatch_qty(rst.getDouble(5));
+            batch.setAvailable_qty(rst.getDouble(6));
+            batch.setIs_sold(rst.getBoolean(7));
+            
+            return batch;
+        }
+        return null;
+    }
+
+
     // @Override
     // public boolean updateBatchQty(String product_code, double qty) throws Exception {
     //     try{
@@ -86,5 +116,27 @@ public class BatchRepository implements IBatchRepository{
     //     }
     //     return false;
     // }
-    
+
+    @Override
+    public List<Batch> getExpiringBatchDetails(String product_code) throws Exception {
+        ResultSet rst = RepositoryCRUD.executeQuery("SELECT * FROM batch where product_code=? AND available_qty > 0 AND DATE(expiry_date) > SUBDATE(CURRENT_DATE, 1) ORDER BY expiry_date", product_code);
+        List<Batch> arrayList = new ArrayList<>();
+        while (rst.next()) {
+            Batch batches = new Batch();
+            batches.setBatch_code(rst.getString(1));
+            batches.setPurchase_date(rst.getDate(2));
+            batches.setExpiry_date(rst.getDate(3));
+            batches.setProduct_code(rst.getString(4));
+            batches.setBatch_qty(rst.getDouble(5));
+            batches.setAvailable_qty(rst.getDouble(6));
+            batches.setIs_sold(rst.getBoolean(7));
+            
+            
+            arrayList.add(batches);
+        }
+        
+        return arrayList;
+    }
+
 }
+    

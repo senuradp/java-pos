@@ -108,6 +108,40 @@ public class BatchService implements IBatchService{
         
     }
 
+    @Override
+    public boolean checkBatchCodeExists(String batch_code) throws Exception {    
+        try{
+            
+            return batchRepositoryDAO.checkBatchCodeExists(batch_code);
+            
+        }catch (Exception ex) {
+            Logger.getLogger(BatchRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    @Override
+    public BatchDTO getBatchDetails(String batch_code) throws Exception {
+        try{
+            Batch batch = batchRepositoryDAO.getBatchDetails(batch_code);
+            BatchDTO batchDTO = new BatchDTO();
+            batchDTO.setBatch_code(batch.getBatch_code());
+            batchDTO.setPurchase_date(batch.getPurchase_date());
+            batchDTO.setExpiry_date(batch.getExpiry_date());
+            batchDTO.setProduct_code(batch.getProduct_code());
+            batchDTO.setBatch_qty(batch.getBatch_qty());
+            batchDTO.setAvailable_qty(batch.getAvailable_qty());
+            batchDTO.setIs_sold(batch.getIs_sold());
+            
+            return batchDTO;
+        }catch (Exception ex) {
+            Logger.getLogger(BatchRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+   
+
     // @Override
     // public boolean updateBatchQty(String product_code, double qty) throws Exception {
     //         try{
@@ -117,5 +151,36 @@ public class BatchService implements IBatchService{
     //         }
     //         return false;
     // }
+
+    @Override
+    public List<BatchDTO> getExpiringBatchDetails(String product_code) {
+        
+        List<BatchDTO> resultDTO = new ArrayList<BatchDTO>();
+        
+        try{
+            List<Batch> result = batchRepositoryDAO.getExpiringBatchDetails(product_code);
+            
+            for(int i=0; i<result.size(); i++){
+                Batch batch = result.get(i);
+                BatchDTO batchDTO = new BatchDTO();
+                batchDTO.setBatch_code(batch.getBatch_code());
+                batchDTO.setPurchase_date(batch.getPurchase_date());
+                batchDTO.setExpiry_date(batch.getExpiry_date());
+                batchDTO.setProduct_code(batch.getProduct_code());
+                batchDTO.setBatch_qty(batch.getBatch_qty());
+                batchDTO.setAvailable_qty(batch.getAvailable_qty());
+                batchDTO.setIs_sold(batch.getIs_sold());
+                
+                resultDTO.add(batchDTO);
+                
+            }
+            
+        }catch(Exception ex){
+            Logger.getLogger(BatchRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return resultDTO;
+        
+    }
     
 }

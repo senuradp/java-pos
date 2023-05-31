@@ -6,6 +6,8 @@
 package com.syos.pos.service.dao;
 
 import com.syos.pos.dto.ShelfDTO;
+import com.syos.pos.entity.Batch;
+import java.util.List;
 
 /**
  *
@@ -22,4 +24,6 @@ public interface IShelfService extends IServiceDAO<ShelfDTO>{
     public boolean checkExpiryDate(String product_code, String batch_code);
 
     public boolean reStockShelf(String product_code, double qty);
+    
+
 }

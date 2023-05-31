@@ -7,10 +7,8 @@ package com.syos.pos.controller;
 
 import java.util.List;
 
-import com.syos.pos.core.RepositoryFactory;
 import com.syos.pos.core.ServiceFactory;
 import com.syos.pos.dto.ShelfDTO;
-import com.syos.pos.service.ShelfService;
 import com.syos.pos.service.dao.IShelfService;
 
 /**
@@ -36,7 +34,7 @@ public class ShelfController {
     public static List<ShelfDTO> getAll() throws Exception{
         return shelfService.getAll();
     }
-
+    
     // restock
     public boolean reStockShelf(String product_code, double restock_qty) throws Exception{
         return shelfService.reStockShelf(product_code, restock_qty);

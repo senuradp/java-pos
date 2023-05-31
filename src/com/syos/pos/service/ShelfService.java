@@ -8,8 +8,10 @@ package com.syos.pos.service;
 import com.syos.pos.core.RepositoryFactory;
 import com.syos.pos.core.ServiceFactory;
 import com.syos.pos.dto.ShelfDTO;
+import com.syos.pos.entity.Batch;
 import com.syos.pos.entity.Shelf;
 import com.syos.pos.repository.ShelfRepository;
+import com.syos.pos.repository.dao.IBatchRepository;
 import com.syos.pos.repository.dao.IShelfRepository;
 import com.syos.pos.service.dao.IShelfService;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ import java.util.logging.Logger;
 public class ShelfService implements IShelfService{
     
     private static final IShelfRepository shelfRepositoryDAO = (IShelfRepository) RepositoryFactory.getInstance().getDAO(RepositoryFactory.RepositoryType.SHELF);
+    private static final IBatchRepository batchRepositoryDAO = (IBatchRepository) RepositoryFactory.getInstance().getDAO(RepositoryFactory.RepositoryType.BATCH);
     
     @Override
     public boolean add(ShelfDTO shelfDTO) {
@@ -128,7 +131,38 @@ public class ShelfService implements IShelfService{
     @Override
     public boolean reStockShelf(String product_code, double qty) {
         try{
-            return shelfRepositoryDAO.reStockShelf(product_code, qty);
+            
+            double shelfAvailableQty = getAvailableQty(product_code);
+            double updateShelfAvailableQty = shelfAvailableQty + qty;
+            double restockQty = qty;
+            
+            List<Batch> expiringList = batchRepositoryDAO.getExpiringBatchDetails(product_code);
+            
+            for(int i=0 ; i<expiringList.size(); i++){
+                Batch batch = expiringList.get(i);
+                
+                if(restockQty == 0){
+                    return true;
+                }
+                
+                if(batch.getAvailable_qty() >= restockQty){
+                    
+                    shelfRepositoryDAO.updateShelf(product_code, updateShelfAvailableQty);
+                    batch.setAvailable_qty(batch.getAvailable_qty() - restockQty);
+                    batchRepositoryDAO.update(batch);
+                    
+                    restockQty = 0;
+                    
+                }else{
+                    
+                    restockQty = restockQty - batch.getAvailable_qty();
+                    batch.setAvailable_qty(0);
+                    batchRepositoryDAO.update(batch);
+                    
+                }
+            }
+            
+            
         }catch (Exception ex) {
              Logger.getLogger(ShelfRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -144,5 +178,7 @@ public class ShelfService implements IShelfService{
         }
         return null;
     }
+
+    
     
 }

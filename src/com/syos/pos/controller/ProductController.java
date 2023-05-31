@@ -5,7 +5,6 @@
  */
 package com.syos.pos.controller;
 
-import com.syos.pos.core.RepositoryFactory;
 import com.syos.pos.core.ServiceFactory;
 import com.syos.pos.dto.ProductDTO;
 import com.syos.pos.service.dao.IProductService;

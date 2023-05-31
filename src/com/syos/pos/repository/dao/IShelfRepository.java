@@ -22,8 +22,6 @@ public interface IShelfRepository extends IRepositoryDAO<Shelf>{
     // check the expiry date of the batch to be stocked next
     boolean checkExpiryDate(String product_code, String batch_code) throws Exception;
 
-    // restock shelf
-    boolean reStockShelf(String product_code, double qty) throws Exception;
 
     // get the batch code of the product
     String getBatchCode(String product_code) throws Exception;
