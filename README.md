@@ -9,6 +9,7 @@ The project was developed for one of my assignments has used Object Oriented Pro
 - Facade design pattern
 - Factory design pattern
 - Repository design pattern
+- Command design pattern
 - MVC (Model View Controller)
 - DTO (Data Transfer Object)
 - DAO (Data Access Object)
