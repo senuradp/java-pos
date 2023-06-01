@@ -15,7 +15,7 @@ The project was developed for one of my assignments has used Object Oriented Pro
 
 ## Installation
 
-Use the command https://github.com/senuradp/java-pos.git to clone the project.
+Use the below command to clone the project.
 
 ```bash
 git clone https://github.com/senuradp/java-pos.git
