@@ -7,6 +7,7 @@
             <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/src/com/syos/pos/repository/BillDetailRepository.java</file>
             <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/src/com/syos/pos/service/BillDetailService.java</file>
             <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/src/com/syos/pos/dto/BillDetailDTO.java</file>
+            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/src/com/syos/pos/config/DBConnection.java</file>
             <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/src/com/syos/pos/dto/BillHeaderDTO.java</file>
             <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/src/com/syos/pos/service/OrderService.java</file>
         </group>
