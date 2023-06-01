@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class BatchService implements IBatchService{
     
-    private static final IBatchRepository batchRepositoryDAO = (IBatchRepository) RepositoryFactory.getInstance().getDAO(RepositoryFactory.RepositoryType.BATCH);
+    private IBatchRepository batchRepositoryDAO = (IBatchRepository) RepositoryFactory.getInstance().getDAO(RepositoryFactory.RepositoryType.BATCH);
 
     @Override
     public boolean add(BatchDTO batchDTO) {

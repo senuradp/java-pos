@@ -24,7 +24,7 @@ public class ProductRepository implements IProductRepository{
     public boolean add(Product product) {
         
         try {
-            return RepositoryCRUD.executeUpdate("INSERT INTO product VALUES(?,?,?,?)", product.getProduct_code(),product.getProduct_name(), product.getProduct_price());
+            return RepositoryCRUD.executeUpdate("INSERT INTO product VALUES(?,?,?)", product.getProduct_code(),product.getProduct_name(), product.getProduct_price());
         } catch (Exception ex) {
             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -36,7 +36,7 @@ public class ProductRepository implements IProductRepository{
     public boolean update(Product product) {
         
         try {
-            return RepositoryCRUD.executeUpdate("UPDATE product SET product_code=?,name=?,unit_price=? WHERE product_code=?" ,product.getProduct_code(),product.getProduct_name(), product.getProduct_code());
+            return RepositoryCRUD.executeUpdate("UPDATE product SET product_code=?,name=?,price=? WHERE product_code=?" ,product.getProduct_code(),product.getProduct_name(), product.getProduct_price(), product.getProduct_code());
         } catch (Exception ex) {
             Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
         }

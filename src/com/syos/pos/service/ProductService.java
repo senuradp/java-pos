@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class ProductService implements IProductService{
     
-    private static final IProductRepository productRepositoryDAO = (IProductRepository) RepositoryFactory.getInstance().getDAO(RepositoryFactory.RepositoryType.PRODUCT);
+    private IProductRepository productRepositoryDAO = (IProductRepository) RepositoryFactory.getInstance().getDAO(RepositoryFactory.RepositoryType.PRODUCT);
 
     @Override
     public boolean add(ProductDTO productDTO) {
