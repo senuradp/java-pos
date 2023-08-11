@@ -157,6 +157,7 @@ public class ShelfService implements IShelfService{
                     
                     restockQty = restockQty - batch.getAvailable_qty();
                     batch.setAvailable_qty(0);
+                    batch.setIs_sold(false);
                     batchRepositoryDAO.update(batch);
                     
                 }
@@ -175,6 +176,46 @@ public class ShelfService implements IShelfService{
             return shelfRepositoryDAO.getBatchCode(product_code);
         }catch (Exception ex) {
              Logger.getLogger(ShelfRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public boolean checkShelfCodeExists(String shelf_code) throws Exception {
+        try{
+            
+            return shelfRepositoryDAO.checkShelfCodeExists(shelf_code);
+            
+        }catch (Exception ex) {
+            Logger.getLogger(ShelfRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    @Override
+    public double getShelfCapacity(String shelf_code) {
+        try{
+            return shelfRepositoryDAO.getCapacity(shelf_code);
+        }catch (Exception ex) {
+            Logger.getLogger(ShelfRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    @Override
+    public ShelfDTO getShelfDetails(String shelf_code) throws Exception {
+        try{
+            Shelf shelf = shelfRepositoryDAO.getShelfDetails(shelf_code);
+            ShelfDTO shelfDTO = new ShelfDTO();
+            shelfDTO.setShelf_code(shelf.getShelf_code());
+            shelfDTO.setProduct_code(shelf.getProduct_code());
+            shelfDTO.setCapacity(shelf.getCapacity());
+            shelfDTO.setAvailable_qty(shelf.getAvailable_qty());
+            
+            
+            return shelfDTO;
+        }catch (Exception ex) {
+            Logger.getLogger(ShelfRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

@@ -40,4 +40,18 @@ public class ShelfController {
         return shelfService.reStockShelf(product_code, restock_qty);
     }
     
+    public  boolean checkShelfCodeExists(String shelf_code) throws Exception{
+        return shelfService.checkShelfCodeExists(shelf_code);
+    }
+
+    // get shelf capacity
+    public double getShelfCapacity(String shelf_code) throws Exception{
+        return shelfService.getShelfCapacity(shelf_code);
+    }
+    
+    // get batch details
+    public  ShelfDTO getShelfDetails(String shelf_code) throws Exception{
+        return shelfService.getShelfDetails(shelf_code);
+    }
+    
 }

@@ -5,7 +5,14 @@
  */
 package com.syos.pos.menucommand;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
+
+import com.syos.pos.controller.ProductController;
+import com.syos.pos.controller.ShelfController;
+import com.syos.pos.report.FacadeReport;
 
 /**
  *
@@ -20,7 +27,7 @@ public class MenuSystem {
         BatchService batchService = new BatchService();
         ProductService productService = new ProductService();
         ShelfService shelfService = new ShelfService();
-        OrderService orderService = new OrderService();
+        OrderServiceMenu orderService = new OrderServiceMenu();
 
         MenuInvoker invoker = new MenuInvoker(batchService, productService, shelfService, orderService);
 
@@ -87,36 +94,114 @@ public class MenuSystem {
 
         // get user name
         String loginUsername = user.getUsername();
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Normal menu for 1 ");
+        System.out.print("Report menu for 2 ");
+        System.out.print("Restock for 3 ");
+        System.out.print("Enter menu choice: ");
+        int menuChoice = sc.nextInt();
 
-        while (true) {
-            System.out.println("----- Menu -----");
-            System.out.println("1. Batch");
-            System.out.println("2. Product");
-            System.out.println("3. Shelf");
-            System.out.println("4. Order");
-            System.out.println("5. Exit");
-            System.out.print("Enter an option: ");
-            String entityOption = scanner.nextLine();
-
-            if (entityOption.equalsIgnoreCase("5")) {
-                System.out.println("Exiting the menu...");
-                break;
+        if (menuChoice == 1){
+            while (true) {
+                System.out.println("----- Menu -----");
+                System.out.println("1. Batch");
+                System.out.println("2. Product");
+                System.out.println("3. Shelf");
+                System.out.println("4. Order");
+                System.out.println("5. Exit");
+                System.out.print("Enter an option: ");
+                String entityOption = scanner.nextLine();
+    
+                if (entityOption.equalsIgnoreCase("5")) {
+                    System.out.println("Exiting the menu...");
+                    break;
+                }
+    
+                System.out.println("Choose an operation:");
+                System.out.println("1. Add");
+                System.out.println("2. Update");
+                System.out.println("3. Delete");
+                System.out.println("4. Get All");
+                System.out.print("Enter an option: ");
+                String operationOption = scanner.nextLine();
+                
+                
+                //get the entity from option get operation from option 
+                
+                invoker.executeCommand(getEntityFromOption(entityOption), getOperationFromOption(operationOption), userQueries.getUserRole(loginUsername));
+                
             }
+        }else if(menuChoice == 2){
+            // input for report menu for the rports in the facade design pattern
 
-            System.out.println("Choose an operation:");
-            System.out.println("1. Add");
-            System.out.println("2. Update");
-            System.out.println("3. Delete");
-            System.out.println("4. Get All");
-            System.out.print("Enter an option: ");
-            String operationOption = scanner.nextLine();
+            FacadeReport report = new FacadeReport();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        
+            Scanner sc1 = new Scanner(System.in);
+            System.out.println("For Sales report enter 1");
+            System.out.println("For Shelf report enter 2");
+            System.out.println("For Stock report enter 3");
+            System.out.println("For Bill report enter 4");
 
+            System.out.print("Enter report choice: ");
+            int reportChoice = sc1.nextInt();
+
+            if (reportChoice == 1){
+                // get user input for date
+                System.out.print("Enter date in yyyy-MM-dd format: ");
+                String date = sc1.next();
+                try {
+                    report.getSalesReport().generateReportByDate(dateFormat.parse(date));
+                } catch (ParseException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }else if (reportChoice == 2){
+                // get todays date aond convert to string
+                Date date = new Date();
+                String today = dateFormat.format(date);
+                try {
+                    report.getShelfReport().generateReportByDate(dateFormat.parse(today));
+                } catch (ParseException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }else if (reportChoice == 3){
+                report.getStockReport().generateReport();
+            }else if (reportChoice == 4){
+                report.getBillReport().generateReport();
+            }else{
+                System.out.println("Invalid option. Please try again.");
+            }
             
-            //get the entity from option get operation from option 
-            
-            invoker.executeCommand(getEntityFromOption(entityOption), getOperationFromOption(operationOption), userQueries.getUserRole(loginUsername));
-            
+        }else if (menuChoice == 3){
+            Scanner rescanner = new Scanner(System.in);
+            System.out.println("Enter product code: ");
+            String product_code = rescanner.nextLine();
+
+            ShelfController shelfController = new ShelfController();
+            ProductController productController = new ProductController();
+            if (productController.checkProductCodeExists(product_code)) {
+                System.out.println("Enter quantity to restock: ");
+                double quantity = rescanner.nextDouble();
+
+                try {
+                    shelfController.reStockShelf(product_code, quantity);
+                    System.out.println("Shelf restocked successfully!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println("Failed to restock shelf.");
+                }
+            } else {
+                System.out.println("Product code not found.");
+            }
+        }else{
+            System.out.println("Invalid option. Please try again.");
         }
+
+       
+
     }
 
     private static String getEntityFromOption(String option) {

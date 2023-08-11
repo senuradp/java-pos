@@ -54,7 +54,7 @@ public class BatchServiceTestNew {
             testBatchDTO.setPurchase_date(dateFormat.parse("2023-05-25"));
             testBatchDTO.setExpiry_date(dateFormat.parse("2023-06-25"));
         } catch (ParseException ex) {
-            Logger.getLogger(BatchServiceTest.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BatchServiceTestNew.class.getName()).log(Level.SEVERE, null, ex);
         }
         testBatchDTO.setProduct_code("P001");
         testBatchDTO.setBatch_qty(100);

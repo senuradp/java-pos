@@ -16,5 +16,5 @@ public interface IProductService extends IServiceDAO<ProductDTO>{
 //    get product by code
     ProductDTO getProductByCode(String code)throws Exception;
     
-    
+    boolean checkProductCodeExists(String product_code);
 }

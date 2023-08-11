@@ -11,7 +11,7 @@ import org.junit.runner.notification.Failure;
 
 public class BatchServiceTestRunner {
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(BatchServiceTest.class);
+        Result result = JUnitCore.runClasses(BatchServiceTestNew.class);
 
         // Print test results
         for (Failure failure : result.getFailures()) {

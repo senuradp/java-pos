@@ -22,9 +22,16 @@ public interface IShelfRepository extends IRepositoryDAO<Shelf>{
     // check the expiry date of the batch to be stocked next
     boolean checkExpiryDate(String product_code, String batch_code) throws Exception;
 
-
     // get the batch code of the product
     String getBatchCode(String product_code) throws Exception;
+    
+    boolean checkShelfCodeExists(String shelf_code) throws Exception;
 
+    // get capacity of the shelf
+    public double getCapacity(String shelf_code);
+    
+    // get shelf details
+    Shelf getShelfDetails(String shelf_code) throws Exception;
+    
     
 }

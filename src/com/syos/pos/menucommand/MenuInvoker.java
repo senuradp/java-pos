@@ -13,9 +13,9 @@ import java.util.Map;
  * @author senu2k
  */
 public class MenuInvoker {
-     private final Map<String, Command> commands;
+    private final Map<String, Command> commands;
 
-    MenuInvoker(BatchService batchService, ProductService productService, ShelfService shelfService, OrderService orderService) {
+    MenuInvoker(BatchService batchService, ProductService productService, ShelfService shelfService, OrderServiceMenu orderService) {
         commands = new HashMap<>();
         commands.put("add", new AddCommand(batchService, productService, shelfService, orderService));
         commands.put("update", new UpdateCommand(batchService, productService, shelfService, orderService));

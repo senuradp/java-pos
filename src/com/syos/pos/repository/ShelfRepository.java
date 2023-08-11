@@ -144,6 +144,47 @@ public class ShelfRepository implements IShelfRepository{
         return false;
     }
 
+    @Override
+    public boolean checkShelfCodeExists(String shelf_code) throws Exception {
+
+        ResultSet rst = RepositoryCRUD.executeQuery("SELECT * FROM shelf WHERE shelf_code = ?", shelf_code);
+        if (rst.next()) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public double getCapacity(String shelf_code) {
+        try{
+            ResultSet rst = RepositoryCRUD.executeQuery("SELECT * FROM shelf WHERE shelf_code = ?", shelf_code);
+            if (rst.next()) {
+                return rst.getDouble(3);
+            } else {
+                return 0;
+            }
+        }catch(Exception ex){
+           Logger.getLogger(ProductRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    @Override
+    public Shelf getShelfDetails(String shelf_code) throws Exception {
+        // get shelf details
+        ResultSet rst = RepositoryCRUD.executeQuery("SELECT * FROM shelf WHERE shelf_code = ?", shelf_code);
+        if (rst.next()) {
+            Shelf shelf = new Shelf();
+            shelf.setShelf_code(rst.getString(1));
+            shelf.setProduct_code(rst.getString(2));
+            shelf.setCapacity(rst.getDouble(3));
+            shelf.setAvailable_qty(rst.getDouble(4));
+
+            return shelf;
+        }
+        return null;
+    }
+
     
     
 }

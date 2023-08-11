@@ -25,5 +25,12 @@ public interface IShelfService extends IServiceDAO<ShelfDTO>{
 
     public boolean reStockShelf(String product_code, double qty);
     
+    boolean checkShelfCodeExists(String shelf_code) throws Exception;
+
+    // get  capacity of shelf
+    public double getShelfCapacity(String shelf_code);
+
+    // get shelf details
+    ShelfDTO getShelfDetails(String shelf_code) throws Exception;
 
 }

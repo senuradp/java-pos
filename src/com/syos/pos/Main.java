@@ -7,17 +7,19 @@ package com.syos.pos;
 
 import com.syos.pos.menucommand.MenuSystem;
 
+
 /**
  *
  * @author senu2k
  */
-
+    
 public class Main {
     
     public static void main(String[] args) throws Exception {
       
         MenuSystem menu = new MenuSystem();
         menu.display();
+
            
     }
     

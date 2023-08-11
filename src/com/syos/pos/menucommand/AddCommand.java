@@ -12,13 +12,13 @@ import java.util.Scanner;
  * @author senu2k
  */
 public class AddCommand implements Command {
-     private final BatchService batchService;
+    private final BatchService batchService;
     private final ProductService productService;
     private final ShelfService shelfService;
-    private final OrderService orderService;
+    private final OrderServiceMenu orderService;
     String entity; // package-private access
 
-    AddCommand(BatchService batchService, ProductService productService, ShelfService shelfService, OrderService orderService) {
+    AddCommand(BatchService batchService, ProductService productService, ShelfService shelfService, OrderServiceMenu orderService) {
         this.batchService = batchService;
         this.productService = productService;
         this.shelfService = shelfService;

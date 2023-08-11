@@ -104,5 +104,15 @@ public class ProductService implements IProductService{
         
         return productDTO;
     }
+
+    @Override
+    public boolean checkProductCodeExists(String product_code) {
+        try {
+            return productRepositoryDAO.checkProductCodeExists(product_code);
+        } catch (Exception ex) {
+            Logger.getLogger(ProductService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
     
 }

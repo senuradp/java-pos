@@ -15,5 +15,7 @@ public interface IProductRepository extends IRepositoryDAO<Product>{
     
 //    get product by code (product code)
         Product getProductByCode(String code) throws Exception;
-    
+ 
+        boolean checkProductCodeExists(String product_code) throws Exception;
+        
 }

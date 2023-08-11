@@ -3,18 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/src/com/syos/pos/service/BatchService.java</file>
-            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/test/com/syos/pos/service/batch/BatchServiceTestMock.java</file>
-            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/test/com/syos/pos/service/batch/ShelfServiceTest.java</file>
-            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/src/com/syos/pos/repository/BatchRepository.java</file>
-            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/test/com/syos/pos/service/batch/BillHeaderServiceTest.java</file>
-            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/test/com/syos/pos/service/batch/OrderServiceTest.java</file>
-            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/test/com/syos/pos/service/batch/BatchServiceTest.java</file>
-            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/test/com/syos/pos/service/batch/TestServiceMock.java</file>
-            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/test/com/syos/pos/service/batch/BillDetailServiceTest.java</file>
+            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/test/com/syos/pos/report/ReportTestRunner.java</file>
+            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/test/com/syos/pos/service/batch/BatchServiceTestNew.java</file>
             <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/src/com/syos/pos/Main.java</file>
-            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/src/com/syos/pos/controller/BatchController.java</file>
-            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/test/com/syos/pos/service/batch/ProductServiceTest.java</file>
+            <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/test/com/syos/pos/report/FacadeReportTest.java</file>
             <file>file:/Users/senu2k/Documents/UniDocs/3rdYear/CleanCoding/SYOSPOS/test/com/syos/pos/service/batch/BatchServiceTestRunner.java</file>
         </group>
     </open-files>

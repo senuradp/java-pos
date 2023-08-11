@@ -7,6 +7,8 @@ package com.syos.pos.menucommand;
 
 import java.sql.ResultSet;
 
+import com.syos.pos.core.RepositoryCRUD;
+
 /**
  *
  * @author senu2k

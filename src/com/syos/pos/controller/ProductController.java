@@ -16,26 +16,30 @@ import java.util.List;
  */
 public class ProductController {
     
-    private static final IProductService productService = (IProductService)ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.PRODUCT);
+    private final IProductService productService = (IProductService)ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.PRODUCT);
 
-    public static boolean addItem(ProductDTO productDTO){
+    public boolean addItem(ProductDTO productDTO){
         return productService.add(productDTO);
     }
     
-    public static boolean updateItem(ProductDTO productDTO){
+    public  boolean updateItem(ProductDTO productDTO){
         return productService.update(productDTO);
     }
     
-    public static boolean deleteItem(String code) throws Exception{
+    public  boolean deleteItem(String code) throws Exception{
        return productService.delete(code);
     }
 
-    public static List<ProductDTO> getAll() throws Exception{
+    public  List<ProductDTO> getAll() throws Exception{
         return productService.getAll();
     }
     
-    public static ProductDTO getProductByCode(String code)throws Exception{
+    public  ProductDTO getProductByCode(String code)throws Exception{
         return productService.getProductByCode(code);
     }    
+
+    public  boolean checkProductCodeExists(String code) {
+        return productService.checkProductCodeExists(code);
+    }
     
 }

@@ -19,21 +19,23 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
  * @author senu2k
  */
 public class OrderService {
+    
+    private static final IProductService productService = (IProductService) ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.PRODUCT);
+    private static final IShelfService shelfService = (IShelfService) ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.SHELF);
+    private static final IBillHeaderService billHeaderService = (IBillHeaderService) ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.BILL_HEADER);
+    private static final IBillDetailService billDetailService = (IBillDetailService) ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.BILL_DETAIL);
 
     private static OrderService orderServiceInstance;
     private BillHeaderDTO billHeaderDTO;
     private BillDetailDTO billDetailDTO;
 
-    private static final IProductService productService = (IProductService) ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.PRODUCT);
-    private static final IShelfService shelfService = (IShelfService) ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.SHELF);
-    private static final IBillHeaderService billHeaderService = (IBillHeaderService) ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.BILL_HEADER);
-    private static final IBillDetailService billDetailService = (IBillDetailService) ServiceFactory.getInstance().getDAO(ServiceFactory.ServiceType.BILL_DETAIL);
     
     private OrderService() {
     }
@@ -77,11 +79,23 @@ public class OrderService {
 
         return billHeaderDTO.getTotal_bill_price();
     }
-
+//    amount_tendered > billHeaderDTO.getTotal_bill_price()
+ 
     public double checkoutPay(double amount_tendered, String payment_type) throws Exception {
 
         // pass the payment type to bill header
         billHeaderDTO.setPayment_type(payment_type);
+        
+        if (amount_tendered < billHeaderDTO.getTotal_bill_price()) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("The amount tendered is lower than the total bill price which is " + billHeaderDTO.getTotal_bill_price());
+            System.out.println("Please enter a sufficient amount: ");
+            amount_tendered = scanner.nextDouble();
+//            scanner.nextLine(); // Consume newline character
+
+            // Recalculate balance
+            return checkoutPay(amount_tendered, payment_type);
+        }
 
         double balance = calculateBalancePay(amount_tendered);
         

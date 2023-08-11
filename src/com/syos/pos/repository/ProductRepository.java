@@ -83,5 +83,14 @@ public class ProductRepository implements IProductRepository{
         }
         return product;
     }
+
+    @Override
+    public boolean checkProductCodeExists(String product_code) throws Exception {
+        ResultSet rst = RepositoryCRUD.executeQuery("select * from product where product_code=?", product_code);
+        if (rst.next()) {
+            return true;
+        }
+        return false;
+    }
     
 }
