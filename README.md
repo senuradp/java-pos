@@ -22,6 +22,20 @@ Use the below command to clone the project.
 git clone https://github.com/senuradp/java-pos.git
 ```
 
+Start mysql in homebrew
+
+```bash
+brew services start mysql
+```
+
+Database connection
+
+```bash
+DB_NAME = syos
+DB_USERNAME = root
+DB_PASSWORD = 'none, leave it empty'
+```
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
