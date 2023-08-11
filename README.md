@@ -1,4 +1,4 @@
-# [![My Skills](https://skills.thijs.gg/icons?i=java&theme=light)]  JAVA Point Of Sale (POS) System
+# ![My Skills](https://skills.thijs.gg/icons?i=java&theme=light)  JAVA Point Of Sale (POS) System
 
 By : S K Senura Deshan Perera (CB008868) - Final Year Undergraduate at APIIT Sri Lanka
 
