@@ -48,8 +48,22 @@ public class MenuSystem {
 
             switch (authOption) {
                 case "1":
-                    System.out.print("Enter username: ");
-                    String registerUsername = scanner.nextLine();
+                                       
+                    boolean usernameExists = true;
+                    String registerUsername = "";
+
+                    while (usernameExists) {
+                        System.out.print("Enter username: ");
+                        registerUsername = scanner.nextLine();
+
+                        // Check if the username already exists
+                        usernameExists = userQueries.checkUsernameExist(registerUsername);
+
+                        if (usernameExists) {
+                            System.out.println("Username already exists. Please choose another username.");
+                        }
+                    }
+                    
                     System.out.print("Enter password: ");
                     String registerPassword = scanner.nextLine();
                     System.out.print("Enter role (Admin/Cashier): ");

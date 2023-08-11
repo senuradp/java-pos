@@ -58,4 +58,21 @@ public class MySQLUserQueries implements UserQueries {
         }
         return null;
     }
+    
+    @Override
+    public boolean checkUsernameExist(String username) {
+        // Implement the logic to check if the username exists in the "user" table
+        // You can use a SELECT query and executeQuery method to retrieve results
+        try {
+            String sql = "SELECT username FROM user WHERE username = ?";
+            ResultSet resultSet = RepositoryCRUD.executeQuery(sql, username);
+
+            return resultSet.next(); // Returns true if there's a result (username exists)
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false; // Return false in case of an error
+    }
 }
