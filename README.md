@@ -36,7 +36,7 @@ DB_USERNAME = root
 DB_PASSWORD = 'none, leave it empty'
 ```
 
-SQL Scripts for tables
+SQL scripts for tables
 ```bash
 CREATE TABLE `product` (
   `product_code` varchar(10) NOT NULL,
